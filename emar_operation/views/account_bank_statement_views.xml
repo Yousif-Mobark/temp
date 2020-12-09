@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+        <record id="view_bank_statement_form_operation_type" model="ir.ui.view">
+            <field name="name">account.bank.statement.form</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form" />
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                    <xpath expr="//field[@name='line_ids']//field[@name='partner_id']" position="after">
+                        <field name="operation_type" />
+                        <field name="attach" />
+                    </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

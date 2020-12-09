@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Payment methods -->
+        <record id="account_payment_method_rnr_in" model="account.payment.method">
+            <field name="name">Received Notes Receivable</field>
+            <field name="code">rnr</field>
+            <field name="payment_type">inbound</field>
+            <field name="check_type">bank</field>
+        </record>
+        <record id="account_payment_method_tr_in" model="account.payment.method">
+            <field name="name">Received Trust Receipt</field>
+            <field name="code">trust_receipt</field>
+            <field name="payment_type">inbound</field>
+            <field name="check_type">bank</field>
+        </record>
+
+        <record id="account_payment_method_dnr_out" model="account.payment.method">
+            <field name="name">Delivered Notes Receivable</field>
+            <field name="code">dnr</field>
+            <field name="payment_type">outbound</field>
+            <field name="check_type">bank</field>
+        </record>
+        <record id="account_payment_method_gnp_out" model="account.payment.method">
+            <field name="name">Generate Notes Payable</field>
+            <field name="code">gnp</field>
+            <field name="payment_type">outbound</field>
+            <field name="check_type">bank</field>
+        </record>
+
+    </data>
+</odoo>

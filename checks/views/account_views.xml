@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+
+        <record id="view_account_journal_form_miscellaneous_inherit" model="ir.ui.view">
+            <field name="name">account.journal.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form" />
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//page[@name='advanced_settings']//group[1]" position="inside">
+                    <field name="outbound_payment_method_ids_code" invisible="1"/>
+
+                    <group string="Advanced Deferred Checkbook options" colspan="12" attrs="{'invisible': [('outbound_payment_method_ids_code', '!=', 'gnp')]}">
+                            <field name="deferred_checkbook" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name='name'/>
+                                    <field name='bank_journal_id' />
+                                    <field name='next_number' />
+                                    <field name='to' />
+                                    <field name='manual_numbering' />
+                                    <field name='state'/>
+                                </tree>
+<!--                                <form>-->
+<!--                                    <field name='name'/>-->
+<!--                                    <field name='bank_journal_id' />-->
+<!--                                    <field name='next_number' />-->
+<!--                                    <field name='to' />-->
+<!--                                    <field name='manual_numbering' />-->
+<!--                                    <field name='state'/>-->
+<!--                                </form>-->
+                            </field>
+                    </group>
+
+                     <group string="Advanced options" attrs="{'invisible': [('type', '!=', 'general')]}">
+                          <field name="under_collection_journal" />
+                          <field name="under_deposit_journal" />
+                    </group>
+
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

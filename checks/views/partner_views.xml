@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="view_partner_check_form" model="ir.ui.view">
+            <field name="name">res.partner.check.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='accounting']" position="inside">
+
+                    <group string="checks" name="checks">
+                        <field name="responsible_check_collecting" />
+                    </group>
+
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

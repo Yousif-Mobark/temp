@@ -1,0 +1,97 @@
+<odoo>
+    <data>
+
+        <!--        product category add working items-->
+        <record id="product_category_working_items_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.category.working.items.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view" />
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='parent_id']" position="after">
+                     <field name="category_type"/>
+                     <field name="working_item_id" attrs="{'invisible': [('category_type', '!=','working_items')], 'required': [('category_type', '=', 'working_items')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--        product -->
+        <record id="product_template_form_view_working_items" model="ir.ui.view">
+            <field name="name">product.template.working.items</field>
+            <field eval="1" name="priority"/>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="before">
+                     <field name="product_subtype"/>
+                     <field name="product_brand_id" attrs="{'invisible': [('product_subtype', '!=','raw_material')], 'required': [('product_subtype', '=', 'raw_material')]}"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!--        Row Material products in Stock-->
+        <record id="product_template_action_product_raw_material" model="ir.actions.act_window">
+            <field name="name">Products Raw Material</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">form</field>
+            <field name="context">{"search_default_consumable": 1, 'default_type': 'product', 'default_product_subtype': 'raw_material'}</field>
+            <field name="domain">[('product_subtype', '=', 'raw_material')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_product_raw_material_stock" name="Products Raw Material" action="product_template_action_product_raw_material"
+        parent="stock.menu_stock_inventory_control" sequence="2"/>
+
+        <!--        Row Material categories products in Stock configurations-->
+        <record id="product_category_raw_material_action_form" model="ir.actions.act_window">
+            <field name="name">Product Raw Material Categories</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.category</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_category_search_view"/>
+            <field name="view_id" ref="product.product_category_list_view"/>
+            <field name="context">{'default_category_type': 'raw_material'}</field>
+            <field name="domain">[('category_type', '=', 'raw_material')]</field>
+        </record>
+        <menuitem action="product_category_raw_material_action_form" id="menu_product_category_config_raw_material"
+            parent="stock.menu_product_in_config_stock" sequence="3" />
+
+        <!--        Working Items products in project-->
+        <record id="product_template_action_product_working_items" model="ir.actions.act_window">
+            <field name="name">Products Working Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_type">form</field>
+            <field name="context">{"search_default_consumable": 1, 'default_type': 'product', 'default_product_subtype': 'working_items'}</field>
+            <field name="domain">[('product_subtype', '=', 'working_items')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_product_working_items" name="Products Working Items" action="product_template_action_product_working_items"
+        parent="project.menu_project_config" sequence="51"/>
+
+        <!--     4-  Sub Working Items Categories : in Project -> Configuration  and Domain to get all categories with type "Working Items" only.-->
+        <record id="project_product_category_working_items_action_form" model="ir.actions.act_window">
+            <field name="name">Projects Working Items Categories</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.category</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product.product_category_search_view"/>
+            <field name="view_id" ref="product.product_category_list_view"/>
+            <field name="context">{'default_category_type': 'working_items'}</field>
+            <field name="domain">[('category_type', '=', 'working_items')]</field>
+        </record>
+        <menuitem action="project_product_category_working_items_action_form" id="menu_product_category_config_working_items"
+            parent="project.menu_project_config" sequence="52" />
+
+    </data>
+</odoo>

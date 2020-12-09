@@ -1,0 +1,199 @@
+<odoo>
+
+    <!-- Account Check NR Forms-->
+    <record id="view_account_check_nr_form" model="ir.ui.view">
+        <field name="name">account.check.nr.form</field>
+        <field name="model">account.check.nr</field>
+        <field name="arch" type="xml">
+            <form string="Account Check NR">
+                <sheet>
+                    <header>
+
+                        <button string="Handed to Collect" type="action" name="%(action_handed_to_collect_nr_wizard)d" class="oe_highlight" states="in_hand,rejected,returned,returned_from_bank" />
+                        <button string="Cancelled" type="action" name="%(action_cancellation_nr_wizard)d" class="oe_highlight" states="in_hand" />
+
+                        <button string="In Bank" type="action" name="%(action_in_bank_nr_wizard)d" class="oe_highlight" states="handed_to_collect" />
+                        <button string="Collected Cash" type="action" name="%(action_collected_cash_nr_wizard)d" class="oe_highlight" states="handed_to_collect" />
+                        <button string="Returned" type="action" name="%(action_returned_nr_wizard)d" class="oe_highlight" states="handed_to_collect" />
+
+                        <button string="Bank Deposited" type="action" name="%(action_bank_deposited_nr_wizard)d" class="oe_highlight" states="in_bank,stop_check_request" />
+                        <button string="Rejected" type="action" name="%(action_rejected_nr_wizard)d" class="oe_highlight" states="in_bank" />
+                        <button string="Stop Check Request" type="action" name="%(action_stop_check_request_nr_wizard)d" class="oe_highlight" states="in_bank" />
+
+                        <button string="Handed to Partner" type="object" name="handed_to_partner" class="oe_highlight" states="rejected"/>
+                        <button string="Returned from Bank" type="action" name="%(action_return_from_bank_nr_wizard)d" class="oe_highlight" states="stop_check_request" />
+
+                        <button string="Handed to Partner" type="action" name="%(action_handed_to_partner_nr_wizard)d" class="oe_highlight" states="returned,returned_from_bank" />
+
+                        <field name="state" widget="statusbar"/>
+
+                    </header>
+                    <group>
+                        <group>
+                            <field name="type"/>
+                            <field name="payment_method_id"/>
+                            <field name="journal_id"/>
+                            <field name="check_partner"/>
+                        </group>
+                        <group>
+                            <field name="issue_date"/>
+                            <field name="due_date"/>
+                            <field name="amount"/>
+                        </group>
+                        <group>
+                            <field name="from_bank_id" attrs="{'invisible': [('type', '!=', 'nr')]}"/>
+                            <field name="in_bank_journal_id" attrs="{'invisible': [('type', '!=', 'nr')]}"/>
+                            <field name="bank_check_template" attrs="{'invisible': [('type', '!=', 'nr')]}"/>
+                        </group>
+                        <group>
+                            <field name="printed_due_date" attrs="{'invisible': [('type', '!=', 'nr')]}"/>
+                            <field name="check_number" attrs="{'invisible': [('type', '!=', 'nr')]}"/>
+                            <field name="check_guarantor" attrs="{'invisible': [('type', '!=', 'nr')]}"/>
+                            <field name="responsible_id" attrs="{'invisible': [('type', '!=', 'nr')]}"/>
+                        </group>
+
+                        <group string="Operations" colspan="12">
+                            <field name="operation_ids" nolabel="1">
+                                <tree create="false" edit="false">
+                                    <field name="type"/>
+                                    <field name="operation"/>
+                                    <field name="journal_id"/>
+                                    <field name="note"/>
+                                </tree>
+                            </field>
+                        </group>
+
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Account Check NR Tree-->
+    <record id="view_account_check_nr_tree" model="ir.ui.view">
+        <field name="name">account.check.nr.tree</field>
+        <field name="model">account.check.nr</field>
+        <field name="arch" type="xml">
+            <tree string="Account Check NR">
+                <field name="type"/>
+                <field name="payment_method_id"/>
+                <field name="journal_id"/>
+                <field name="check_partner"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Account Check NR Action-->
+    <record id="open_view_account_check_nr" model="ir.actions.act_window">
+        <field name="name">Notes Receivable</field>
+        <field name="res_model">account.check.nr</field>
+        <field name="view_type">form</field>
+        <field name="domain">[]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Account Check NR.
+            </p>
+        </field>
+    </record>
+
+    <!-- Account Check NR Menu-->
+    <menuitem id="menu_account_check_nr" name="Notes Receivable" parent="account.account_account_menu" sequence="10" action="open_view_account_check_nr"/>
+
+
+    <!-- Account Check NP Forms-->
+    <record id="view_account_check_np_form" model="ir.ui.view">
+        <field name="name">account.check.np.form</field>
+        <field name="model">account.check.np</field>
+        <field name="arch" type="xml">
+            <form string="Account Check NP">
+
+                <sheet>
+                    <header>
+
+                        <button string="Bank Debited" type="object" name="bank_debited" class="oe_highlight" states="handed"/>
+                        <button string="Returned" type="action" name="%(action_np_returned_wizard)d" class="oe_highlight" states="handed" />
+                        <button string="Rejected" type="action" name="%(action_np_rejected_wizard)d" class="oe_highlight" states="handed"/>
+
+
+                        <field name="state" widget="statusbar"/>
+
+                    </header>
+                    <group>
+
+                        <group>
+                            <field name="journal_id"/>
+                            <field name="issue_date"/>
+                            <field name="due_date"/>
+                        </group>
+                        <group>
+                            <field name="deferred_checkbook"/>
+                            <field name="bank_check_template"/>
+                            <field name="deferred_bank_journal"/>
+                        </group>
+                        <group>
+                            <field name="check_number"/>
+                            <field name="amount"/>
+
+                        </group>
+                        <group string="Operations" colspan="12">
+                            <field name="operation_ids" nolabel="1">
+                                <tree create="false" edit="false">
+                                    <field name="type"/>
+                                    <field name="operation"/>
+                                    <field name="journal_id"/>
+                                    <field name="note"/>
+
+                                </tree>
+                            </field>
+                        </group>
+
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Account Check NP Tree-->
+    <record id="view_account_check_np_tree" model="ir.ui.view">
+        <field name="name">account.check.np.tree</field>
+        <field name="model">account.check.np</field>
+        <field name="arch" type="xml">
+            <tree string="Account Check NP">
+                <field name="journal_id"/>
+                <field name="issue_date"/>
+                <field name="due_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Account Check NP Action-->
+    <record id="open_view_account_check_np" model="ir.actions.act_window">
+        <field name="name">Notes Payable</field>
+        <field name="res_model">account.check.np</field>
+        <field name="view_type">form</field>
+        <field name="domain">[]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Account Check NP.
+            </p>
+        </field>
+    </record>
+
+    <!-- Account Check NP Menu-->
+    <menuitem id="menu_account_check_np" name="Notes Payable" parent="account.account_account_menu" sequence="11" action="open_view_account_check_np"/>
+
+</odoo>

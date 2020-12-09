@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+
+        <record id="view_account_payment_form_check_inherit" model="ir.ui.view">
+            <field name="name">account.payment.check.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="payment.view_account_payment_form_inherit_payment" />
+            <field name="arch" type="xml">
+
+                    <xpath expr='//group[2]' position="inside">
+
+                        <!-- "Received Notes Receivable"-->
+                        <field name="issue_date" attrs="{'required': [('payment_method_code','in', ['rnr','gnp'])], 'invisible': [('payment_method_code', 'not in',  ['rnr','gnp'])]}"/>
+                        <field name="due_date" attrs="{'required': [('payment_method_code','in', ['rnr','gnp'])], 'invisible': [('payment_method_code', 'not in',  ['rnr','gnp'])]}"/>
+                        <field name="from_bank_id" attrs="{'required': [('payment_method_code','=','rnr')], 'invisible': [('payment_method_code', '!=', 'rnr')]}"/>
+                        <field name="in_bank_journal_id" attrs="{'required': [('payment_method_code','=','rnr')], 'invisible': [('payment_method_code', '!=', 'rnr')]}"/>
+                        <field name="bank_check_template" attrs="{'required': [('payment_method_code','in', ['rnr','gnp'])], 'invisible': [('payment_method_code', 'not in',  ['rnr','gnp'])]}"/>
+                        <field name="printed_due_date" attrs="{'required': [('payment_method_code','=','rnr')], 'invisible': [('payment_method_code', '!=', 'rnr')]}"/>
+                        <field name="check_number" attrs="{'required': [('payment_method_code','in', ['rnr','gnp'])], 'invisible': [('payment_method_code', 'not in',  ['rnr','gnp'])]}"/>
+                        <field name="check_guarantor" attrs="{'required': [('payment_method_code','=','rnr')], 'invisible': [('payment_method_code', '!=', 'rnr')]}"/>
+
+                        <!-- "Delivered Notes Receivable"-->
+                        <field name="nr" domain="[('state', '=', 'in_hand')]" attrs="{'required': [('payment_method_code','=','dnr')], 'invisible': [('payment_method_code', '!=', 'dnr')]}"/>
+
+                        <!-- Generate Notes Payable-->
+                        <field name="deferred_checkbook" attrs="{'required': [('payment_method_code','=','gnp')], 'invisible': [('payment_method_code', '!=', 'gnp')]}"/>
+                        <field name="deferred_manual_numbering" invisible="1"/>
+                    </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

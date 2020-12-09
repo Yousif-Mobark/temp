@@ -1,0 +1,55 @@
+<odoo>
+
+    <!-- Working Item Forms-->
+    <record id="view_working_items_form" model="ir.ui.view">
+        <field name="name">working.item.form</field>
+        <field name="model">working.item</field>
+        <field name="arch" type="xml">
+            <form string="Working Item">
+            <sheet string="Working Item">
+                <div class="oe_title">
+                    <h1>
+                        <field name="name" placeholder="Working Item Name"/>
+                    </h1>
+                </div>
+                <group>
+                    <field name="code"/>
+                </group>
+
+            </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+            </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Working Item Tree-->
+    <record id="view_working_items_tree" model="ir.ui.view">
+        <field name="name">working.item.tree</field>
+        <field name="model">working.item</field>
+        <field name="arch" type="xml">
+            <tree string="Working Item">
+              <field name="name"/>
+              <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="open_view_working_items" model="ir.actions.act_window">
+        <field name="name">Working Item</field>
+        <field name="res_model">working.item</field>
+        <field name="view_type">form</field>
+        <field name="domain">[]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">main</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Working Item.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="project_menu_working_items" name="Working Item" parent="project.menu_project_config" sequence="50" action="open_view_working_items"/>
+
+</odoo>
