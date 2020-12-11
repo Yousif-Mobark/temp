@@ -1,0 +1,167 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* agreement_attach_confirmation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-20 08:33+0000\n"
+"PO-Revision-Date: 2019-10-20 08:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: agreement_attach_confirmation
+#: selection:agreement.attach.confirmation,type:0
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_agreement_id
+msgid "Agreement"
+msgstr "الإتفاقية"
+
+#. module: agreement_attach_confirmation
+#: selection:agreement.attach.confirmation,state:0
+#: model:ir.ui.view,arch_db:agreement_attach_confirmation.view_project_agreement_confirmation_form
+msgid "Approved"
+msgstr "تصديق"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_project_agreement_planned_check_confirmaion
+msgid "Check Confirmation"
+msgstr "التحقق من التعميد"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_project_agreement_confirmation_ids
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_project_agreement_planned_confirmation_id
+#: model:ir.ui.view,arch_db:agreement_attach_confirmation.view_project_agreement_confirmation_form
+msgid "Confirmation"
+msgstr "التعميد"
+
+#. module: agreement_attach_confirmation
+#: model:ir.ui.menu,name:agreement_attach_confirmation.agreement_attach_confirmation_menu
+msgid "Confirmations"
+msgstr "التعميدات"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_customer_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: agreement_attach_confirmation
+#: selection:agreement.attach.confirmation,state:0
+msgid "Draft"
+msgstr "مبدئي"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_attach_id
+msgid "Files"
+msgstr "الملف"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: agreement_attach_confirmation
+#: selection:agreement.attach.confirmation,type:0
+msgid "Item"
+msgstr "بنود"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_agreement_line_ids
+msgid "Items"
+msgstr "البنود"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_project_agreement_planned_attachment_number
+msgid "Number of Attachments"
+msgstr "عدد المرفقات"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_name
+msgid "Order Reference"
+msgstr "الرقم"
+
+#. module: agreement_attach_confirmation
+#: code:addons/agreement_attach_confirmation/models/models.py:87
+#, python-format
+msgid "Please you must Add Confirmation For This Line %s"
+msgstr "عفوا يجب تعميد البند أولا %s"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_project_id
+msgid "Project"
+msgstr "المشروع"
+
+#. module: agreement_attach_confirmation
+#: model:ir.actions.act_window,name:agreement_attach_confirmation.action_agreement_confirmation
+msgid "Project Agreement Confirmation"
+msgstr "تعميد الإتفاقية"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_state
+msgid "State"
+msgstr "الحالة"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model.fields,field_description:agreement_attach_confirmation.field_agreement_attach_confirmation_type
+msgid "Type"
+msgstr "النوع"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model,name:agreement_attach_confirmation.model_agreement_attach_confirmation
+msgid "agreement.attach.confirmation"
+msgstr "agreement.attach.confirmation"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model,name:agreement_attach_confirmation.model_project_agreement
+msgid "project.agreement"
+msgstr "project.agreement"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model,name:agreement_attach_confirmation.model_project_agreement_planned
+msgid "project.agreement.planned"
+msgstr "project.agreement.planned"
+
+#. module: agreement_attach_confirmation
+#: model:ir.model,name:agreement_attach_confirmation.model_project_agreement_tendar_wizard
+msgid "project.agreement.tendar.wizard"
+msgstr "project.agreement.tendar.wizard"
+

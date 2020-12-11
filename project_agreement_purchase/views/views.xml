@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+    <record id="view_project_agreement_tendar_form" model="ir.ui.view">
+            <field name="name">project.agreement.tendar.form</field>
+            <field name="model">project.agreement</field>
+            <field name="inherit_id" ref="project_agreement.view_project_agreement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//button[@name="closed"]' position="after">
+                   <!--button name="open_agreement_tendar_wizard" string="Create Purchase Request For All" states="implementing" context="{'action_name': 'action_project_agreement_tendar_wizard','type':'all'}" type="object"  class="oe_highlight"/ -->
+                    <button name="open_agreement_tendar_wizard" string="Create Purchase Request"
+                            groups="project_agreement.group_agreement_project_civil,project_agreement.group_agreement_project_construction,project_agreement.group_agreement_project_manager" states="implementing" context="{'action_name': 'action_project_agreement_tendar_wizard' , 'type':'one'}" type="object"  class="oe_highlight"/>
+                </xpath>
+            </field>
+    </record>
+
+
+<!--page string="Consumed" name="agreement_consumed">
+                                <field name="project_agreement_consumed_ids" readonly="1"></field>
+                            </page-->
+
+
+
+      <record id="view_project_agreement_planned_purchase_form" model="ir.ui.view">
+            <field name="name">view.project.agreement.planned.purchase.form</field>
+            <field name="model">project.agreement.planned</field>
+            <field name="inherit_id" ref="project_agreement.view_project_agreement_planned_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="progress"]' position="after">
+                    <field name="allow_quantity_overdraw" />
+                </xpath>
+                <xpath expr='//notebook/page[@name="costs"]/group[@name="deliverquantity"]' position="after">
+                     <group colspan="4" col="4" name="purchasequantity" string="Purchase Quantity">
+                         <field name="previous_purchased"/>
+                         <field name="requested_qty" />
+                         <field name="purchase_residual"/>
+                         <field name="purchase_cost" />
+                     </group>
+                </xpath>
+            </field>
+      </record>
+  </data>
+</odoo>

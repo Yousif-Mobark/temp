@@ -1,0 +1,1109 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_agreement
+#	* purchase_requisition
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-22 05:26+0000\n"
+"PO-Revision-Date: 2019-11-22 05:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "Project Manager Recommendations"
+msgstr "توصية مدير المشروع"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "Finance Manager Recommendations"
+msgstr "توصية المدير المالي"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "Exceutive Manager Recommendations"
+msgstr "توصية المدير التنفيذي"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "Assistant Exceutive Manager Recommendations"
+msgstr "توصية نائب المدير التنفيذي"
+
+#. module: project_agreement
+#: code:addons/project_agreement/models/project_agreement.py:17
+#, python-format
+msgid "Error!!, VAT Percentage must be between 0 and 100 only."
+msgstr "خطأ!!, الضريبة يجب أن تكون نسبة بين الصفر و 100 فقط."
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_total_after_vat
+msgid "Total After Vat"
+msgstr "المجموع بعد الضريبة"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_vat_amount
+msgid "Vat Amount"
+msgstr "مبلغ ضريبة القيمة المضافة"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_vat_percentage
+msgid "Vat Percentage %"
+msgstr "نسبة ضريبة القيمة المضافة %"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Call for Tender Reference:</strong><br/>"
+msgstr "<strong>مرجع المناقصة:</strong><br/>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Date</strong>"
+msgstr "<strong>التاريخ</strong>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Description</strong>"
+msgstr "<strong>وصف</strong>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Product UoM</strong>"
+msgstr "‏<strong>وحدة القياس:</strong>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Qty</strong>"
+msgstr "<strong>الكمية</strong>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Reference </strong>"
+msgstr "‏<strong>المرجع </strong>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Scheduled Date</strong>"
+msgstr "‏<strong>التاريخ المخطط له</strong>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Scheduled Ordering Date:</strong><br/>"
+msgstr "‏<strong>التاريخ المخطط له:</strong><br/>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Selection Type:</strong><br/>"
+msgstr "‏<strong>طريقة الاختيار:</strong><br/>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Source:</strong><br/>"
+msgstr "‏<strong>المصدر:</strong><br/>"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "<strong>Vendor </strong>"
+msgstr "‏<strong>المورد </strong>"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_crossovered_budget_lines_total
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_account_id
+msgid "Account"
+msgstr "حساب"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_agreement_id
+#: model:ir.ui.menu,name:project_agreement.menu_sub_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_planned_form
+msgid "Agreement"
+msgstr "إتفاقية المشروع"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_date_end
+msgid "Agreement Deadline"
+msgstr "تاريخ إنتهاء المناقصة"
+
+#. module: project_agreement
+#: model:ir.ui.menu,name:project_agreement.menu_agreement_line
+msgid "Agreement Lines"
+msgstr "بنود إتفاقية المشروع"
+
+#. module: project_agreement
+#: model:res.groups,name:project_agreement.group_agreement_manager
+msgid "Agreement Manager"
+msgstr "مدير الإتفاقيات"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_name
+msgid "Agreement Reference"
+msgstr "مرجع المناقصة"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_exclusive
+msgid "Agreement Selection Type"
+msgstr "نوع المناقصة"
+
+#. module: project_agreement
+#: model:res.groups,name:project_agreement.group_agreement_project_study
+msgid "Agreement Study"
+msgstr "دراسة الإتفاقية/المشروع"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_agreement_type
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_agreement_type
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_id_8567
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_name
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_type_form
+msgid "Agreement Type"
+msgstr "نوع الإتفاقية/المشروع"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.res_config_settings_view_form
+msgid "Agreement Types"
+msgstr "أنواع المناقصات"
+
+#. module: project_agreement
+#: model:res.groups,name:project_agreement.group_agreement_project_user
+msgid "Agreement User"
+msgstr "مستخدم الإتفاقية"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_crossovered_budget_agreement_ids
+#: model:ir.ui.menu,name:project_agreement.menu_main_agreement
+#: model:ir.ui.view,arch_db:project_agreement.crossovered_budget_view_form_agreement
+msgid "Agreements"
+msgstr "الإتفاقيات"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_all_project_agreement_planned_line_ids
+msgid "All Project Agreement Planned Line"
+msgstr "بنود الإتفاقية"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_account_analytic_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_account_analytic_id
+msgid "Analytic Account"
+msgstr "المشروع"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+#: selection:project.agreement,state:0
+msgid "Approved"
+msgstr "تصديق"
+
+#. module: purchase_requisition
+#: selection:purchase.requisition,state:0
+msgid "Bid Selection"
+msgstr "طريقة الاختيار"
+
+#. module: purchase_requisition
+#: model:purchase.requisition.type,name:purchase_requisition.type_single
+msgid "Blanket Order"
+msgstr "Blanket Order"
+
+#. module: project_agreement
+#: model:ir.model,name:project_agreement.model_crossovered_budget
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_budget_id
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_planned_form
+msgid "Budget"
+msgstr "الموازنة"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "Budget Generating"
+msgstr "توليد الموازنة"
+
+#. module: project_agreement
+#: model:ir.model,name:project_agreement.model_crossovered_budget_lines
+msgid "Budget Line"
+msgstr "خط الموازنة"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_budget_type
+msgid "Budget Type"
+msgstr "نوع الموازنة"
+
+#. module: project_agreement
+#: selection:project.agreement,state:0
+msgid "Budget generating"
+msgstr "توليد الموازنة"
+
+#. module: purchase_requisition
+#: model:ir.actions.report,name:purchase_requisition.action_report_purchase_requisitions
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "Call for Tenders"
+msgstr "المناقصات"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_stock_ok
+msgid "Can Stored"
+msgstr "يمكن تخزينة"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_sale_ok
+msgid "Can be Deliver"
+msgstr "يمكن تسليمه"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_purchase_ok
+msgid "Can be Purchased"
+msgstr "يمكن أن تُشترى"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "Cancel Call"
+msgstr "إلغاء المناقصة"
+
+#. module: purchase_requisition
+#: selection:purchase.requisition,state:0
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: purchase_requisition
+#: code:addons/purchase_requisition/models/purchase_requisition.py:82
+#, python-format
+msgid "Cancelled by the agreement associated to this quotation."
+msgstr "Cancelled by the agreement associated to this quotation."
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_child_ids
+msgid "Child Items"
+msgstr "البنود"
+
+#. module: project_agreement
+#: selection:project.agreement,agreement_type:0
+msgid "Civil"
+msgstr "مدني"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,help:purchase_requisition.action_purchase_requisition
+msgid "Click to start a new purchase agreement."
+msgstr "إضغط لإضافة مناقصة."
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "Close"
+msgstr "إقفال"
+
+#. module: project_agreement
+#: selection:project.agreement,state:0
+msgid "Closed"
+msgstr "مٌنتهية"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_code
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_code
+msgid "Code"
+msgstr "الكود"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_company_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+#: selection:purchase.requisition,state:0
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_analytic_account_id
+msgid "Cost Center"
+msgstr "مركز التكلفة"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_planned_form
+msgid "Costs"
+msgstr "تكاليف"
+
+#. module: purchase_requisition
+#: selection:product.template,purchase_requisition:0
+msgid "Create a draft purchase order"
+msgstr "إنشاء طلب عرض سعر"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_create_uid
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_create_uid
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_create_uid
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_create_uid
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_create_date
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_create_date
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_create_date
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_create_date
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_currency_id
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_customer_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_type_form
+msgid "Data for new quotations"
+msgstr "Data for new quotations"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_planned_form
+msgid "Deliver Quantity"
+msgstr "إستلام الكمية"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_delivered_quantity
+msgid "Delivered Qty"
+msgstr "الكمية التي تم تسليمها"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_schedule_date
+msgid "Delivery Date"
+msgstr "تاريخ التوصيل"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_description
+msgid "Description"
+msgstr "الوصف"
+
+#. module: project_agreement
+#: selection:project.agreement,budget_type:0
+msgid "Detail"
+msgstr "منفصلة"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_display_name
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_display_name
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_display_name
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_display_name
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: purchase_requisition
+#: selection:purchase.requisition.type,line_copy:0
+msgid "Do not create RfQ lines automatically"
+msgstr "Do not create RfQ lines automatically"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+#: selection:purchase.requisition,state:0
+msgid "Done"
+msgstr "منتهي"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_move_dest_id
+msgid "Downstream Move"
+msgstr "Downstream Move"
+
+#. modules: project_agreement, purchase_requisition
+#: selection:project.agreement,state:0
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+#: selection:purchase.requisition,state:0
+msgid "Draft"
+msgstr "مبدئي"
+
+#. module: project_agreement
+#: selection:project.agreement,agreement_type:0
+msgid "Emergency"
+msgstr "طوارئ"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_end_date
+msgid "End Date"
+msgstr "تاريخ الإنتهاء"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "End Month"
+msgstr "آخر الشهر"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,help:purchase_requisition.action_purchase_requisition
+msgid "Example of purchase agreements include call for tenders and blanket orders."
+msgstr "Example of purchase agreements include call for tenders and blanket orders."
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,help:purchase_requisition.action_purchase_requisition
+msgid "For a blanket order, you can record an agreement for a specifc period\n"
+"            (e.g. a year) and you order products within this agreement, benefiting\n"
+"            from the negociated prices."
+msgstr "For a blanket order, you can record an agreement for a specifc period\n"
+"            (e.g. a year) and you order products within this agreement, benefiting\n"
+"            from the negociated prices."
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: project_agreement
+#: model:ir.module.category,description:project_agreement.module_category_project_and_agreement
+msgid "Helps you handle your agreement"
+msgstr "Helps you handle your agreement"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_id
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: project_agreement
+#: selection:project.agreement,state:0
+msgid "Implementing"
+msgstr "تنفيذ"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,help:purchase_requisition.action_purchase_requisition
+msgid "In a call for tenders, you can record the products you need to buy\n"
+"            and generate the creation of RfQs to vendors. Once the tenders have\n"
+"            been registered, you can review and compare them and you can\n"
+"            validate some and cancel others."
+msgstr "In a call for tenders, you can record the products you need to buy\n"
+"            and generate the creation of RfQs to vendors. Once the tenders have\n"
+"            been registered, you can review and compare them and you can\n"
+"            validate some and cancel others."
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "In negotiation"
+msgstr "قيد المناقشة"
+
+#. module: project_agreement
+#: selection:project.agreement.planned,type:0
+msgid "Internal Workers"
+msgstr "عمالة داخلية"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_is_cost_center
+msgid "Is Cost Center"
+msgstr "تحديد كمركز تكلفة"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_planned_form
+msgid "Item Name"
+msgstr "وصف البند"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_planned_form
+msgid "Items"
+msgstr "العناصر"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement___last_update
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned___last_update
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition___last_update
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line___last_update
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_write_uid
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_write_uid
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_write_uid
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_write_uid
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_write_date
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_write_date
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_write_date
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_write_date
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_line_copy
+msgid "Lines"
+msgstr "البنود"
+
+#. module: project_agreement
+#: selection:project.agreement.planned,type:0
+msgid "Material"
+msgstr "مواد أو معدات"
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_stock_warehouse_orderpoint
+msgid "Minimum Inventory Rule"
+msgstr "قاعدة إعادة الطلب"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "Multiple Requisitions"
+msgstr "العديد من طلبات الشراء"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_name
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "New Agreements"
+msgstr "مناقصة جديدة"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "New Quotation"
+msgstr "تسعيرة جديدة"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_order_count
+msgid "Number of Orders"
+msgstr "عدد الطلبات"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_picking_type_id
+msgid "Operation Type"
+msgstr "نوع العملية"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_qty_ordered
+#: model:ir.model.fields,field_description:project_agreement.field_crossovered_budget_lines_required_quantity
+msgid "Ordered Quantities"
+msgstr "الكمية المطلوبة"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_ordering_date
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Ordering Date"
+msgstr "تاريخ الطلب"
+
+#. module: project_agreement
+#: selection:project.agreement.planned,type:0
+msgid "Other"
+msgstr "آخر"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_parent_id
+msgid "Parent"
+msgstr "الأصل"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_planned_form
+msgid "Planned"
+msgstr "المخطط"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_agreement_cost
+msgid "Planned Cost"
+msgstr "الإجمالي العام"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_agreement_revenue
+msgid "Planned Revenue"
+msgstr "إجمالي قيمة الربح"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_product_product_purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_product_template_purchase_requisition
+msgid "Procurement"
+msgstr "التوريدات"
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_procurement_group
+msgid "Procurement Requisition"
+msgstr "طلبات الشراء "
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_procurement_rule
+msgid "Procurement Rule"
+msgstr "قاعده المشتريات "
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_product_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_product_id
+msgid "Product"
+msgstr "البند"
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_product_template
+msgid "Product Template"
+msgstr "قالب البند"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_product_uom_id
+msgid "Product Unit of Measure"
+msgstr "وحدة قياس البند"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "Products"
+msgstr "البنود"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_ids
+msgid "Products to Purchase"
+msgstr "منتجات للشراء"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_progress
+msgid "Progress %"
+msgstr "نسبة الإنجاز %"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_project_id
+#: selection:project.agreement,budget_type:0
+msgid "Project"
+msgstr "المشروع"
+
+#. module: project_agreement
+#: model:ir.module.category,name:project_agreement.module_category_project_and_agreement
+msgid "Project & Agreement"
+msgstr "Project & Agreement"
+
+#. module: project_agreement
+#: model:ir.actions.act_window,name:project_agreement.action_project_agreement
+msgid "Project Agreement"
+msgstr "إتفاقية المشروع"
+
+#. module: project_agreement
+#: model:ir.actions.act_window,name:project_agreement.action_agreement_line
+msgid "Project Agreement Lines"
+msgstr "بنود إتفاقية المشروع"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_project_agreement_planned_line_ids
+msgid "Project Agreement Planned Line"
+msgstr "بنود الإتفاقية"
+
+#. module: project_agreement
+#: model:ir.ui.menu,name:project_agreement.menu_project_agreement
+msgid "Project Agreements"
+msgstr "منافسات المشاريع"
+
+#. module: purchase_requisition
+#: selection:product.template,purchase_requisition:0
+msgid "Propose a call for tenders"
+msgstr "اقترح مناقصة"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_order_requisition_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_requisition_id
+msgid "Purchase Agreement"
+msgstr "المناقصة"
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_purchase_requisition_type
+msgid "Purchase Agreement Type"
+msgstr "نوع المناقصة"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,name:purchase_requisition.tender_type_action
+#: model:ir.ui.menu,name:purchase_requisition.menu_purchase_requisition_type
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_type_form
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_type_tree
+msgid "Purchase Agreement Types"
+msgstr "نوع المناقصة"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,name:purchase_requisition.action_purchase_requisition
+#: model:ir.ui.menu,name:purchase_requisition.menu_purchase_requisition_pro_mgt
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_tree
+msgid "Purchase Agreements"
+msgstr "المناقصات"
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_purchase_order
+msgid "Purchase Order"
+msgstr "أمر شراء"
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "خط امر الشراء"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_purchase_ids
+msgid "Purchase Orders"
+msgstr "أوامر الشراء"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.purchase_order_search_inherit
+msgid "Purchase Orders with requisition"
+msgstr "أوامر الشراء بمناقصات"
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_purchase_requisition
+msgid "Purchase Requisition"
+msgstr "طلب شراء"
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_purchase_requisition_line
+msgid "Purchase Requisition Line"
+msgstr "بند المناقصة"
+
+#. module: purchase_requisition
+#: model:purchase.requisition.type,name:purchase_requisition.type_multi
+msgid "Purchase Tender"
+msgstr "مناقصات الشراء"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,name:purchase_requisition.act_res_partner_2_purchase_order
+msgid "Purchase orders"
+msgstr "اوامر الشراء"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_quantity_copy
+msgid "Quantities"
+msgstr "كميات"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_product_qty
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "RFQs/Orders"
+msgstr "طلبات عروض الأسعار"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+#: selection:project.agreement,state:0
+msgid "Refused"
+msgstr "مرفوض"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.product_template_form_view_inherit
+msgid "Reordering"
+msgstr "إعادة الطلب"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,name:purchase_requisition.action_purchase_requisition_to_so
+msgid "Request for Quotation"
+msgstr "طلب التسعير"
+
+#. module: purchase_requisition
+#: model:ir.actions.act_window,name:purchase_requisition.action_purchase_requisition_list
+msgid "Request for Quotations"
+msgstr "طلب عروض الأسعار"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.report_purchaserequisitions
+msgid "Requests for Quotation Details"
+msgstr "تفاصيل عروض الأسعار"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_required_quantity
+msgid "Required Qty"
+msgstr "الكمية المطلوبة"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.purchase_order_search_inherit
+msgid "Requisition"
+msgstr "الطلب"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_stock_move_requistion_line_ids
+msgid "Requistion Line"
+msgstr "Requistion Line"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "Reset to Draft"
+msgstr "إعادة الى وضع مبدئي"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_crossovered_budget_lines_residual
+msgid "Residual Amount"
+msgstr "المبلغ المتبقى"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_residual_quantity
+msgid "Residual Qty"
+msgstr "الكمية المتبقية"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_responsible_id
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_user_id
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Responsible"
+msgstr "مسئول"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_revenue
+msgid "Revenue %"
+msgstr "نسبة الربح %"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_revenue_amount
+msgid "Revenue Amount"
+msgstr "قيمة الربح"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_schedule_date
+msgid "Scheduled Date"
+msgstr "التاريخ المجدول"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Search Purchase Agreements"
+msgstr "البحث في المناقصات"
+
+#. module: purchase_requisition
+#: selection:purchase.requisition.type,exclusive:0
+msgid "Select multiple RFQ"
+msgstr "اختيار مجموعة عروض"
+
+#. module: purchase_requisition
+#: selection:purchase.requisition.type,exclusive:0
+msgid "Select only one RFQ (exclusive)"
+msgstr "اختيار عرض واحد فقط"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,help:purchase_requisition.field_purchase_requisition_type_exclusive
+msgid "Select only one RFQ (exclusive):  when a purchase order is confirmed, cancel the remaining purchase order.\n"
+"\n"
+"                    Select multiple RFQ: allows multiple purchase orders. On confirmation of a purchase order it does not cancel the remaining orders"
+msgstr "Select only one RFQ (exclusive):  when a purchase order is confirmed, cancel the remaining purchase order.\n"
+"\n"
+"                    Select multiple RFQ: allows multiple purchase orders. On confirmation of a purchase order it does not cancel the remaining orders"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_type_sequence
+msgid "Sequence"
+msgstr "التسلسل"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_set_to_child
+msgid "Set To Child"
+msgstr "إضافتة على البنود التابعة له"
+
+#. module: purchase_requisition
+#: selection:purchase.requisition.type,quantity_copy:0
+msgid "Set quantities manually"
+msgstr "Set quantities manually"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Source"
+msgstr "الأصل"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_origin
+msgid "Source Document"
+msgstr "المستند المصدر"
+
+#. module: project_agreement
+#: model:ir.model.fields,help:project_agreement.field_project_agreement_planned_sale_ok
+msgid "Specify if the product can be selected in a sales order line."
+msgstr "تحديد أن البند يمكن تسليمة للعميل."
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_start_date
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "Start Implementing"
+msgstr "بدء التنفيذ"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "Start Studing"
+msgstr "بدء الدراسة"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_state
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_state
+msgid "State"
+msgstr "الحالة"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_state
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Status"
+msgstr "الحالة "
+
+#. module: purchase_requisition
+#: model:ir.model,name:purchase_requisition.model_stock_move
+msgid "Stock Move"
+msgstr "حركة المخزون"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "Terms and Conditions"
+msgstr "الشروط و الأحكام"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,help:purchase_requisition.field_purchase_requisition_schedule_date
+msgid "The expected and scheduled delivery date where all the products are received"
+msgstr "The expected and scheduled delivery date where all the products are received"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_total
+msgid "Total Cost"
+msgstr "السعر الإجمالي"
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_type
+msgid "Type"
+msgstr "النوع"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Unassigned"
+msgstr "غير مسند"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_filter
+msgid "Unassigned  Requisition"
+msgstr "مناقصات غير مسندة"
+
+#. modules: project_agreement, purchase_requisition
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_price_unit
+#: model:ir.model.fields,field_description:project_agreement.field_crossovered_budget_lines_price_unit
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_line_price_unit
+msgid "Unit Price"
+msgstr "سعر الوحده "
+
+#. module: project_agreement
+#: model:ir.model.fields,field_description:project_agreement.field_project_agreement_planned_product_uom
+msgid "Unit of Measuer"
+msgstr "الوحدة"
+
+#. module: purchase_requisition
+#: selection:purchase.requisition.type,line_copy:0
+msgid "Use lines of agreement"
+msgstr "Use lines of agreement"
+
+#. module: purchase_requisition
+#: selection:purchase.requisition.type,quantity_copy:0
+msgid "Use quantities of agreement"
+msgstr "Use quantities of agreement"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "Validate"
+msgstr "اعتماد "
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_vendor_id
+msgid "Vendor"
+msgstr "المورد"
+
+#. module: project_agreement
+#: selection:project.agreement.planned,type:0
+msgid "View"
+msgstr "تجميعي"
+
+#. module: purchase_requisition
+#: model:ir.model.fields,field_description:purchase_requisition.field_purchase_requisition_warehouse_id
+msgid "Warehouse"
+msgstr "المخزن"
+
+#. module: project_agreement
+#: selection:project.agreement,state:0
+msgid "Wating Approve"
+msgstr "في إنتظار التصديق"
+
+#. module: purchase_requisition
+#: code:addons/purchase_requisition/models/purchase_requisition.py:88
+#, python-format
+msgid "You cannot confirm call because there is no product line."
+msgstr "الرجاء إضافة بنود أولا"
+
+#. module: purchase_requisition
+#: code:addons/purchase_requisition/models/purchase_requisition.py:105
+#, python-format
+msgid "You have to cancel or validate every RfQ before closing the purchase requisition."
+msgstr "يجب عليك إلغاء أو الموافقة على كل عروض الأسعار قبل إغلاق المناقصة"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "agreement Planned"
+msgstr "خطة الإتفاقية/المشروع"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_tree
+msgid "baptism"
+msgstr "التعميد"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "delivered_quantity"
+msgstr "الكيمة التي تم تسليمها"
+
+#. module: purchase_requisition
+#: model:ir.ui.view,arch_db:purchase_requisition.view_purchase_requisition_form
+msgid "e.g. PO0025"
+msgstr "e.g. PO0025"
+
+#. module: project_agreement
+#: model:ir.model,name:project_agreement.model_project_agreement
+msgid "project.agreement"
+msgstr "project.agreement"
+
+#. module: project_agreement
+#: model:ir.model,name:project_agreement.model_project_agreement_planned
+msgid "project.agreement.planned"
+msgstr "project.agreement.planned"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "required_quantity"
+msgstr "الكمية العامة"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.crossovered_budget_view_form
+msgid "residual_amount"
+msgstr "المبلغ المتبقي"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "residual_quantity"
+msgstr "الكمية المتبقية"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "revenue"
+msgstr "الربح"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "revenue_amount"
+msgstr "مبلغ الربح"
+
+#. module: project_agreement
+#: model:ir.ui.view,arch_db:project_agreement.view_project_agreement_form
+msgid "total"
+msgstr "الإجمالي"
+

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_contractor_purchase_contractor,purchase_contractor.purchase_contractor,model_purchase_contractor_purchase_contractor,,1,0,0,0

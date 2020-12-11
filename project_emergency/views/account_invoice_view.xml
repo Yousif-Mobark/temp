@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+
+        <record id="invoice_emerg_tree" model="ir.ui.view">
+            <field name="name">account.invoice.emerg.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <tree string="Invoice" create="false"  delete="false">
+                    <field name="partner_id"  string="Supplier"/>
+                    <field name="date_invoice"/>
+                    <field name="project_emg_id"/>
+                    <field name="station_id"/>
+                    <field name="area_id"/>
+                    <field name="state"/>
+                    <field name="amount_untaxed"/>
+                    <field name="amount_tax"/>
+                    <field name="amount_total"/>
+                    <field name="residual"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="invoice_supplier_emerg_form">
+            <field name="name">account.invoice.emerg.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="replace">
+                    <header>
+                        <button name="station_manager_validate" type="object" states="draft" string="Validate" class="oe_highlight" groups="station_area.group_station_manager"/>
+                        <button name="station_manager_refuse" type="object" states="draft" string="Refuse" class="oe_highlight" groups="station_area.group_station_manager"/>
+
+                        <button name="billing_manager_validate" type="object" states="sta_mng_approved" string="Validate" class="oe_highlight" groups="account.group_account_manager"/>
+                        <button name="billing_manager_refuse" type="object" states="sta_mng_approved" string="Refuse" class="oe_highlight" groups="account.group_account_manager"/>
+                        <field name="is_user_proj_mng" invisible="1"/>
+                        <button name="project_manager_validate" type="object"  string="Validate" class="oe_highlight" attrs="{'invisible':['|',('is_user_proj_mng','=',False),('state','!=','bil_mng_approved')]}"/>
+                        <button name="project_manager_refuse" type="object" string="Refuse" class="oe_highlight" attrs="{'invisible':['|',('is_user_proj_mng','=',False),('state','!=','bil_mng_approved')]}"  />
+
+                        <!-- <button name="employee_transfere_validate" type="object" states="draft" string="Validate" class="oe_highlight" groups="project_emergency.group_employee_transfere"/> -->
+                        <button name="action_invoice_open" type="object" states="prj_mng_approved" string="Validate" class="oe_highlight" groups="project_emergency.group_employee_transfere"/>
+                        <button name="employee_transfere_refuse" type="object" states="prj_mng_approved" string="Refuse" class="oe_highlight" groups="project_emergency.group_employee_transfere"/>
+                        <button name="%(account.action_account_invoice_payment)d" type="action" states="open" string="Register Payment" groups="project_emergency.group_employee_transfere" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,sta_mng_approved,bil_mng_approved,prj_mng_approved,emp_tra_approved,open,paid"/>
+                    </header>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="project_emg_id" readonly="True"/>
+                    <field name="station_id" readonly="True"/>
+                    <field name="area_id" readonly="True"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_packaging_vieww">
+            <field name="name">Vendor Bill</field>
+            <field name="res_model">account.invoice</field>
+            <field name="domain">[('project_emg_id', '!=', False)]</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('project_emergency.invoice_emerg_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('project_emergency.invoice_supplier_emerg_form')})]"/>
+        </record>
+
+
+        <menuitem name="Emergancy Invoices" id="menu_main_porject_emg_invoice" parent="menu_project_agreement_main" action="action_packaging_vieww"/>
+
+    </data>
+</odoo>

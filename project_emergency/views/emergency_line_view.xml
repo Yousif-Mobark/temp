@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="emergency_confirmation_form" model="ir.ui.view">
+            <field name="name">Emergency Confirmation Form</field>
+            <field name="model">project.emergency.confirmation.line</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false" delete="false">
+                    <sheet>
+                        <group col="4" colspan="2">
+                            <field name="agreement_line_id"/>
+                            <field name="project_emg_id"/>
+                            <field name="agreement_id"/>
+                            <field name="project_id"/>
+                            <field name="station_id"/>
+                            <field name="area_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="product_uom"/>
+                            <field name="quantity"/>
+                            <field name="q_sum"/>
+                            <field name="price_unit"/>
+                            <field name="total_price"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="emergency_confirmation_report1" model="ir.ui.view">
+            <field name="name">Emergency Confirmation List</field>
+            <field name="model">project.emergency.confirmation.line</field>
+            <field name="arch" type="xml">
+                <tree create="false" edit="false" delete="false">
+                    <field name="agreement_line_id"/>
+                    <field name="project_emg_id"/>
+                    <field name="agreement_id"/>
+                    <field name="project_id"/>
+                    <field name="station_id"/>
+                    <field name="area_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="product_uom"/>
+                    <field name="quantity"/>
+                    <field name="q_sum"/>
+                    <field name="price_unit"/>
+                    <field name="total_price"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Search Veiw -->
+        <record id="emergency_confirmation_report_search1" model="ir.ui.view">
+            <field name="name">project.emergency.confirmation.line.search</field>
+            <field name="model">project.emergency.confirmation.line</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="project_emg_id"/>
+                    <field name="agreement_id"/>
+                    <field name="project_id"/>
+                    <field name="station_id"/>
+                    <field name="area_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <separator/>
+                    <filter string="Current Year" name="current_year" domain="[('create_date','&lt;=',(context_today()+relativedelta(day=31,month=12)).strftime('%Y-%m-%d')),('create_date','&gt;=',(context_today()-relativedelta(day=1,month=1)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <filter string="Current Month" name="current_month" domain="[('create_date','&lt;=',(context_today()+relativedelta(day=31)).strftime('%Y-%m-%d')),('create_date','&gt;=',(context_today()-relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
+                    <separator/>
+                    <filter string="Current week" name="current_week" separator="1" domain="[('create_date', '&gt;=', ((context_today()+ relativedelta(weeks=-1, days=1, weekday=0)).strftime('%Y-%m-%d'))),('create_date', '&lt;=', ((context_today()+ relativedelta(weeks=0, weekday=6)).strftime('%Y-%m-%d')))]"/>
+                    <separator/>
+                    <filter string="today" name="current_day" domain="[('create_date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d')), ('create_date', '&lt;=',datetime.datetime.now().strftime('%Y-%m-%d'))]"/>
+                    <group>
+                        <filter string="Emergency Project" name="project_emg_id" domain="[]" context="{'group_by':'project_emg_id'}"/>
+                        <filter string="Project" name="project_id" domain="[]" context="{'group_by':'project_id'}"/>
+                        <filter string="Station" name="station_id" domain="[]" context="{'group_by':'station_id'}"/>
+                        <filter string="Area" name="area_id" domain="[]" context="{'group_by':'area_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <!--Action for Lunch cashmoves-->
+        <record id="emergency_confirmation_action1" model="ir.actions.act_window">
+            <field name="name">Confirmation</field>
+            <field name="res_model">project.emergency.confirmation.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="emergency_confirmation_report_search1"/>
+        </record>
+
+
+        <menuitem id="emergency_confirmation_main1" parent="project_agreement.menu_project_agreement" name="Report"/>
+        <menuitem name="Emergency Confirmation Report" id="emergency_confirmation_menu1" parent="emergency_confirmation_main1" action="emergency_confirmation_action1"/>
+    </data>
+</odoo>

@@ -1,0 +1,221 @@
+<odoo>
+    <data>
+
+        <record id="view_purchase_requisition_form" model="ir.ui.view">
+            <field name="name">purchase.requisition.form.form</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_in_progress']" position="attributes">
+                    <attribute name="groups">project_agreement.group_agreement_project_civil,project_agreement.group_agreement_project_construction</attribute>
+                </xpath>
+
+                <!--button name="419" type="action" attrs="{'invisible': [('state', '!=', 'open')]}"
+                        position="replace">
+                     <button name="419" type="action"  groups="purchase.group_purchase_manager" string="New Quotation" attrs="{'invisible': [('state', '!=', 'open')]}"/>
+                </button>
+                <button name="419" type="action"  class="btn-primary"
+                        attrs="{'invisible': [('state', '!=', 'in_progress')]}" position="replace">
+
+                <button name="419" type="action" string="New Quotation" groups="purchase.group_purchase_manager" class="btn-primary" attrs="{'invisible': [('state', '!=', 'in_progress')]}"/>
+
+                </button-->
+
+                <button name="action_open" states="in_progress"  type="object" class="btn-primary" position="replace">
+
+                <button name="action_open" states="in_progress" string="Validate" groups="purchase.group_purchase_manager" type="object" class="btn-primary"/>
+                </button>
+                <button name="action_done" states="open"  type="object" class="btn-primary" position="replace">
+                   <button name="action_done" states="open" string="Done" groups="purchase.group_purchase_manager" type="object" class="btn-primary"/>
+                </button>
+
+
+               </field>
+        </record>
+        <record id="purchase_order_baqtism_form" model="ir.ui.view">
+            <field name="name">purchase.order.form.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+
+
+                <button name="action_rfq_send" states="draft" type="object" context="{'send_rfq':True}" class="oe_highlight" position="replace">
+                    <button name="action_rfq_send" states="draft" string="Send RFQ by Email" type="object" context="{'send_rfq':True}" class="oe_highlight" groups="purchase.group_purchase_manager"/>
+                </button>
+
+                <button name="action_rfq_send" states="sent"  type="object" context="{'send_rfq':True}" position="replace">
+                    <button name="action_rfq_send" states="sent" string="Re-Send RFQ by Email" type="object" context="{'send_rfq':True}" groups="purchase.group_purchase_manager"/>
+                </button>
+
+                <button name="button_confirm" type="object" states="draft"  id="draft_confirm" position="replace">
+                </button>
+                <button name="button_confirm" type="object" states="sent" class="oe_highlight" id="bid_confirm" position="replace">
+                    <button name="button_confirm" type="object" states="draft,sent" string="Confirm Order" class="oe_highlight" id="bid_confirm" groups="purchase.group_purchase_manager"/>
+                    <button name="send_to_project" type="object" states="purchase" string="Send To Project Manager" class="oe_highlight" id="bid_confirm" groups="purchase.group_purchase_manager"/>
+                    <button name="button_project_confirm" type="object" states="project_confirm" string="Confirm Order" class="oe_highlight" id="bid_confirm" groups="project_agreement.group_agreement_project_construction,project_agreement.group_agreement_project_civil"/>
+                    <button name="button_assistance_confirm" type="object" states="assistance_approve" string="Confirm Order" class="oe_highlight" id="bid_confirm" groups="hr_user_group.group_hr_assistant_executive"/>
+                    <button name="button_approve" type="object" states='executive_director' string="Executive Director" class="oe_highlight" groups="hr_user_group.group_hr_executive_director"/>
+                   <button name="button_cancel" states="draft,to approve,sent,purchase,project_confirm,assistance_approve,executive_director" string="Cancel" type="object"/>              
+</button>
+                <xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" widget="statusbar" statusbar_visible="draft,purchase,project_confirm,assistance_approve,executive_director,done" readonly="1"/>
+                </xpath>
+                <xpath expr='//notebook' position="before">
+                    <group name="agreement_info" string="Agreement Info" colspan="4" col="4">
+                        <field name="agreement_id"/>
+                        <field name="area"/>
+                        <field name="station" domain="[('area_id', '=', area)]"/>
+                        <field name="start_date" />
+                        <field name="end_date" />
+                    </group>
+                </xpath>
+                <xpath expr='//field[@name="order_line"]' position="attributes">
+                    <attribute name="context">{'default_agreement_id':agreement_id,
+                    'default_station':station,
+                    'default_area':area,'default_start_date':start_date,'default_end_date':end_date}</attribute>
+                </xpath>
+                <xpath expr='//field[@name="order_line"]/tree' position="attributes">
+                    <attribute name="decoration-success"> qty_received==product_qty
+                    </attribute>
+                    <attribute name="decoration-danger"> qty_received&lt;product_qty
+                    </attribute>
+                </xpath>
+                <xpath expr='//field[@name="order_line"]/tree/field[@name="name"]' position="after">
+                    <field name="agreement_id" invisible="1"/>
+                    <field name="area" invisible="1"/>
+                    <field name="station" invisible="1"/>
+                     <field name="start_date" invisible="1"/>
+                        <field name="end_date" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="purchase_order_baqtism_tree" model="ir.ui.view">
+            <field name="name">purchase.order.form.tree</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="state"]' position="after">
+                    <field name="total_purchase_qty" invisible="1"/>
+                    <field name="total_purchase_qty_received" invisible="1"/>
+                </xpath>
+                <xpath expr='//tree' position="attributes">
+                    <attribute name="decoration-success">  total_purchase_qty_received==total_purchase_qty
+                    </attribute>
+                    <attribute name="decoration-danger">
+                     total_purchase_qty_received&lt;total_purchase_qty
+                    </attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="purchase_order_line_baqtism_group" model="ir.ui.view">
+            <field name="name">purchase.order.line.agreement.group</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="order_id"]' position="before">
+                    <field name="agreement_id"/>
+                    <field name="area"/>
+                    <field name="station" />
+                </xpath>
+
+                <xpath expr='//filter[@name="groupby_supplier"]' position="before">
+                     <filter name="groupby_agreement" string="Agreement" domain="[]" context="{'group_by' : 'agreement_id'}" />
+                    <filter name="groupby_area" string="Area" domain="[]" context="{'group_by' : 'area'}" />
+                     <filter name="groupby_station" string="Station" domain="[]" context="{'group_by' : 'station'}" />
+                </xpath>
+            </field>
+        </record>
+        <record id="agreement_purchase_order_line_tree" model="ir.ui.view">
+            <field name="name">agreement.purchase.order.line.tree</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="product_qty"]' position="before">
+                    <field name="start_date"/>
+                    <field name="end_date" />
+                    <field name="product_qty" invisible="1"/>
+                    <field name="qty_received" invisible="1"/>
+                </xpath>
+                <xpath expr='//tree' position="attributes">
+                    <attribute name="decoration-success"> qty_received==product_qty
+                    </attribute>
+                    <attribute name="decoration-danger"> qty_received&lt;product_qty
+                    </attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+        <record id="purchase_requisition_agreement_form" model="ir.ui.view">
+            <field name="name">purchase.requisition.agreement.form</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//notebook' position="before">
+                    <group name="agreement_info" string="Agreement Info" colspan="4" col="4">
+                        <field name="agreement_id"/>
+                        <field name="area"/>
+                        <field name="station" domain="[('area_id', '=', area)]"/>
+                        <field name="start_date" />
+                        <field name="end_date" />
+                    </group>
+                </xpath>
+                <xpath expr='//field[@name="line_ids"]' position="attributes">
+                    <attribute name="context">{'default_agreement_id':agreement_id,
+                    'default_station':station,
+                    'default_area':area,'default_start_date':start_date,'default_end_date':end_date}</attribute>
+                </xpath>
+                <xpath expr='//field[@name="line_ids"]/tree/field[@name="product_id"]' position="after">
+                    <field name="agreement_id" invisible="1"/>
+                    <field name="area" invisible="1"/>
+                    <field name="station" invisible="1"/>
+                     <field name="start_date" invisible="1"/>
+                        <field name="end_date" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_purchase_requisition_tree" model="ir.ui.view">
+            <field name="name">purchase.requisition.agreement.tree</field>
+            <field name="model">purchase.requisition</field>
+            <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr='//tree' position="replace">
+                    <tree decoration-success="attach_no!=0" decoration-danger="attach_no == 0" string="Purchase Agreements">
+                        <field name="message_needaction" invisible="1"/>
+                        <field name="attach_no" invisible="1"/>
+                        <field name="name"/>
+                        <field name="user_id"/>
+                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                        <field name="ordering_date"/>
+                        <field name="date_end"/>
+                        <field name="origin"/>
+                        <field name="state"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="purchase_order_line_action" model="ir.actions.act_window">
+            <field name="name">Purchase Order Lines</field>
+            <field name="res_model">purchase.order.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <!-- <field name="context">{"search_default_filter_to_purchase": 1}</field> -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+               Purchase Order Lines Reports.
+              </p>
+            </field>
+        </record>
+
+        <!-- Menues -->
+        <menuitem name="Purchase Order Lines"  id="purchase_order_lines" action="purchase_order_line_action" parent="purchase.menu_procurement_management" sequence="3"/>
+        
+    </data>
+</odoo>

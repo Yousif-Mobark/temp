@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_account_invoice,access.project.account.invoice,account.model_account_invoice,,1,1,1,1
+access_project_account_invoice_line,access.project.account.invoice.line,account.model_account_invoice_line,,1,1,1,1
+access_project_emergency_confirmation,access.project.emergency.confirmation,model_project_emergency_confirmation,,1,1,1,1
+access_project_emergency_confirmation_line,access.project.emergency.confirmation.line,model_project_emergency_confirmation_line,,1,1,1,1
+access_project_account_move_line,access.project.account.move.line,account.model_account_move_line,,1,0,0,0
+access_project_account_invoice_tax,access.project.account.invoice.tax,account.model_account_invoice_tax,,1,0,0,0

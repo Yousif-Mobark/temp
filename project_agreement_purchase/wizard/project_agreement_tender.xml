@@ -1,0 +1,78 @@
+<odoo>
+    <data>
+        <record id="view_project_agreement_tendar_wizard_form" model="ir.ui.view">
+            <field name="name">project.agreement.tendar.wizard.form</field>
+            <field name="model">project.agreement.tendar.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Agreement Tendar">
+                    <sheet>
+                        <field name="agreement_type" invisible="1"/>
+                        <group colspan="4" col="4">
+                            <field name="agreement_id"/>
+                            <field name="wizard_type" invisible="True"/>
+                            <field name="partner_id"/>
+                            <field name="station" attrs="{'required':[('agreement_type','=','emergency')]}"/>
+                            <field name="area" attrs="{'required':[('agreement_type','=','emergency')]}"/>
+                            <field name="start_date" attrs="{'required':[('agreement_type','=','emergency')],'invisible':[('agreement_type','!=','emergency')]}"/>
+                            <field name="end_date" attrs="{'required':[('agreement_type','=','emergency')],'invisible':[('agreement_type','!=','emergency')]}"/>
+                        </group>
+                        <group>
+                            <field name="attach_files_ids" widget="many2many_binary"/>
+                        </group>
+                        <notebook>
+                            <page name="planned_lines" string="Planned Lines">
+                                <field name="project_agreement_tendar_line_ids" context="{'default_agreement_id':agreement_id,'default_agreement_type' : agreement_type ,
+                                                      'default_start_date' : start_date, 'default_end_date' : end_date}">
+                                    <tree editable="bottom" decoration-danger="overdraw==True">
+                                        <field name="name" invisible="True"/>
+                                        <field name="agreement_type" invisible="1" />
+                                        <field name="agreement_id" invisible="True"/>
+                                        <field name="agreement_planned_id" attrs="{'readonly':[('parent.wizard_type','=','all')]}" domain="[('agreement_id','=',agreement_id),('purchase_ok','=',True)]"/>
+                                        <field name="product_id" invisible="True"/>
+                                        <field name="product_uom"/>
+                                        <field name="required_quantity" attrs="{'readonly':[('agreement_type','=','civil')]}" />
+                                        <field name="price_unit" readonly="1"/>
+                                        <field name="total"/>
+                                        <field name="vat_percentage"/>
+                                        <field name="vat_amount"/>
+                                        <field name="total_after_vat"/>
+                                        <field name="previous_purchased"/>
+                                        <field name="requested_qty"/>
+                                        <field name="residual_to_purchase"/>
+                                        <field name="purchase_cost"/>
+                                        <field name="start_date" invisible="True"/>
+                                        <field name="end_date" invisible="True"/>
+                                        <field name="overdraw" invisible="True"/>
+                                       </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                       <group>
+                           <field name="reason"/>
+                       </group>
+                    </sheet>
+                    <footer>
+                        <button string="Create Tendar" name="button_create_tendar" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                        <button string="Request Overdraw" name="request_overdraw_from_manager" type="object" class="btn-danger" attrs="{'invisible':[('agreement_type','!=','civil')]}"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_project_agreement_tendar_wizard" model="ir.actions.act_window">
+            <field name="name">Agreement Tendar</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.agreement.tendar.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_project_agreement_tendar_wizard_form"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+            <!-- <field name="binding_model_id" ref="account.model_account_move" /> -->
+        </record>
+        <!-- <button name="closed" string="Close" states="implementing" type="object"  class="oe_highlight"/> -->
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,460 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_agreement_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-20 08:14+0000\n"
+"PO-Revision-Date: 2019-10-20 08:14+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_agreement_purchase
+#: code:addons/project_agreement_purchase/wizard/project_agreement_tender.py:123
+#, python-format
+msgid "Error!!, VAT Percentage must be between 0 and 100 only."
+msgstr "خطأ!!, الضريبة يجب أن تكون نسبة بين الصفر و 100 فقط."
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_total_after_vat
+msgid "Total After Vat"
+msgstr "المجموع بعد الضريبة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_vat_amount
+msgid "Vat Amount"
+msgstr "مبلغ ضريبة القيمة المضافة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_vat_percentage
+msgid "Vat Percentage %"
+msgstr "نسبة ضريبة القيمة المضافة %"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_agreement_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_agreement_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_agreement_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_line_agreement_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_agreement_id
+#: model:ir.ui.view,arch_db:project_agreement_purchase.purchase_order_line_baqtism_group
+msgid "Agreement"
+msgstr "الإتفاقية"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.purchase_order_baqtism_form
+#: model:ir.ui.view,arch_db:project_agreement_purchase.purchase_requisition_agreement_form
+msgid "Agreement Info"
+msgstr "معلومات الإتفاقية"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_agreement_planned_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_line_agreement_planned_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_line_agreement_planned_id
+msgid "Agreement Planned"
+msgstr "بند الإتفاقية"
+
+#. module: project_agreement_purchase
+#: model:ir.actions.act_window,name:project_agreement_purchase.action_project_agreement_tendar_wizard
+#: model:ir.ui.view,arch_db:project_agreement_purchase.view_project_agreement_tendar_wizard_form
+msgid "Agreement Tendar"
+msgstr "إتفاقية المناقصة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_agreement_type
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_agreement_type
+msgid "Agreement Type"
+msgstr "نوع الإتفاقية"
+
+#. module: project_agreement_purchase
+#: selection:project.agreement.tendar.wizard,wizard_type:0
+msgid "All"
+msgstr "الكل"
+
+#. module: project_agreement_purchase
+#: model:ir.actions.act_window,name:project_agreement_purchase.agreement_product_product_action_all
+#: model:ir.ui.menu,name:project_agreement_purchase.agreement__product_product_menu_all
+msgid "All Items"
+msgstr "كل البنود"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_planned_allow_quantity_overdraw
+msgid "Allow Overdraw"
+msgstr "السماح بالتخطي"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_line_agreement_id
+msgid "Apgreement"
+msgstr "الإتفاقية"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_area
+#: model:ir.ui.view,arch_db:project_agreement_purchase.purchase_order_line_baqtism_group
+msgid "Area"
+msgstr "المنطقة"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.view_project_agreement_tendar_wizard_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: project_agreement_purchase
+#: selection:project.agreement.tendar.wizard,agreement_type:0
+msgid "Civil"
+msgstr "مدني"
+
+#. module: project_agreement_purchase
+#: model:ir.actions.act_window,help:project_agreement_purchase.product_template_agreement_action
+msgid "Click to define a new product."
+msgstr "أنقر هنا لإضافة بند جديد."
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.view_project_agreement_tendar_form
+msgid "Create Purchase Request"
+msgstr "إنشاء طلب الشراء"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.view_project_agreement_tendar_form
+msgid "Create Purchase Request For All"
+msgstr "إنشاء طلب شراء لكل البنود"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.view_project_agreement_tendar_wizard_form
+msgid "Create Tendar"
+msgstr "إنشاء الطلب"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_create_uid
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_create_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.product_template_agreement_kanban_view
+msgid "Deliver QTY:"
+msgstr "الكمية التي تم تسليمها:"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_display_name
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: project_agreement_purchase
+#: selection:project.agreement.tendar.wizard,agreement_type:0
+msgid "Emergency"
+msgstr "طارئ"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_end_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_end_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_end_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_line_end_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_end_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_line_end_date
+msgid "End Date"
+msgstr "تاريخ الإنتهاء"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: project_agreement_purchase
+#: selection:project.agreement.tendar.line.wizard,type:0
+msgid "Internal Workers"
+msgstr "عمالة داخلية"
+
+#. module: project_agreement_purchase
+#: code:addons/project_agreement_purchase/models/project_agreement.py:91
+#: model:ir.actions.act_window,name:project_agreement_purchase.product_template_agreement_action
+#: model:ir.ui.menu,name:project_agreement_purchase.agreement_line_items
+#: model:ir.ui.view,arch_db:project_agreement_purchase.product_template_agreement_tree_view
+#, python-format
+msgid "Items"
+msgstr "البنود"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard___last_update
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_write_uid
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_write_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: project_agreement_purchase
+#: selection:project.agreement.tendar.line.wizard,type:0
+msgid "Material"
+msgstr "مواد او معدات"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: project_agreement_purchase
+#: selection:project.agreement.tendar.wizard,wizard_type:0
+msgid "One"
+msgstr "واحد"
+
+#. module: project_agreement_purchase
+#: selection:project.agreement.tendar.line.wizard,type:0
+msgid "Other"
+msgstr "اٌخرى"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_overdraw
+msgid "Overdraw"
+msgstr "تخطى"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_reason
+msgid "Overdraw Reason"
+msgstr "سبب التخطي"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.view_project_agreement_tendar_wizard_form
+msgid "Planned Lines"
+msgstr "البنود"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_purchase_cost
+msgid "Previous Purchase Cost"
+msgstr "تكلفة الشراء السابقة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_planned_previous_purchased
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_previous_purchased
+msgid "Previous Purchase QTY"
+msgstr "الكمية التي شرائها سابقا"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.product_template_agreement_kanban_view
+msgid "Price:"
+msgstr "السعر:"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_product_id
+msgid "Product"
+msgstr "البند"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_line_project_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_project_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_line_project_id
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_project_id
+msgid "Project"
+msgstr "المشروع"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_project_agreement_consumed_ids
+msgid "Project Agreement Consumed"
+msgstr "البنود المستهلكة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_project_agreement_tendar_line_ids
+msgid "Project Agreement Tendar Line"
+msgstr "بنود المناقصة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_planned_purchase_cost
+msgid "Purchase Cost"
+msgstr "تكلفة الشراء"
+
+#. module: project_agreement_purchase
+#: model:ir.model,name:project_agreement_purchase.model_purchase_order
+msgid "Purchase Order"
+msgstr "أمر الشراء"
+
+#. module: project_agreement_purchase
+#: model:ir.model,name:project_agreement_purchase.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "خط امر الشراء"
+
+#. module: project_agreement_purchase
+#: model:ir.actions.act_window,name:project_agreement_purchase.purchase_order_line_action
+#: model:ir.ui.menu,name:project_agreement_purchase.purchase_order_lines
+msgid "Purchase Order Lines"
+msgstr "بنود المشتريات"
+
+#. module: project_agreement_purchase
+#: model:ir.actions.act_window,help:project_agreement_purchase.purchase_order_line_action
+msgid "Purchase Order Lines Reports."
+msgstr "تقرير مشريات البنود."
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.view_project_agreement_planned_purchase_form
+msgid "Purchase Quantity"
+msgstr "كمية الشراء"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_planned_requested_qty
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_requested_qty
+msgid "Purchase Requested QTY"
+msgstr "الكمية التي تم طلبها"
+
+#. module: project_agreement_purchase
+#: model:ir.model,name:project_agreement_purchase.model_purchase_requisition
+msgid "Purchase Requisition"
+msgstr "طلب شراء"
+
+#. module: project_agreement_purchase
+#: model:ir.model,name:project_agreement_purchase.model_purchase_requisition_line
+msgid "Purchase Requisition Line"
+msgstr "بند المناقصة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_planned_purchase_residual
+msgid "Purchase Residual QTY"
+msgstr "الكمية المتبقي شرائها"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.view_project_agreement_tendar_wizard_form
+msgid "Request Overdraw"
+msgstr "طلب تخطي"
+
+#. module: project_agreement_purchase
+#: model:ir.ui.view,arch_db:project_agreement_purchase.product_template_agreement_kanban_view
+msgid "Required QTY:"
+msgstr "Required QTY:"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_required_quantity
+msgid "Required Qty"
+msgstr "الكمية العامة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_residual_to_purchase
+msgid "Residual QTY"
+msgstr "الكمية المتبقية"
+
+#. module: project_agreement_purchase
+#: code:addons/project_agreement_purchase/wizard/project_agreement_tender.py:69
+#, python-format
+msgid "Sorry Please Add Line First"
+msgstr "عفوا يجب إضافة بنود أولا"
+
+#. module: project_agreement_purchase
+#: code:addons/project_agreement_purchase/wizard/project_agreement_tender.py:72
+#, python-format
+msgid "Sorry you Overdraw Planned QTY For %s , Please Send Overdraw Request To Manager"
+msgstr " عفوا تم تخطي الكمية المسموح بها في  %s , الرجاء إرسال طلب تخطي لمدير المشروع"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_start_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_start_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_line_start_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_order_start_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_line_start_date
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_purchase_requisition_start_date
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_state
+msgid "State"
+msgstr "الحالة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_station
+#: model:ir.ui.view,arch_db:project_agreement_purchase.purchase_order_line_baqtism_group
+msgid "Station"
+msgstr "المحطة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_tendar_wizard_id
+msgid "Tendar Wizard"
+msgstr "معالج المناقصة"
+
+#. module: project_agreement_purchase
+#: model:ir.actions.act_window,help:project_agreement_purchase.product_template_agreement_action
+msgid "The product form contains information to simplify the sale process: price, notes in the quotation, accounting data, procurement methods, etc."
+msgstr "The product form contains information to simplify the sale process: price, notes in the quotation, accounting data, procurement methods, etc."
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_total
+msgid "Total Cost"
+msgstr "إجمالي التكلفة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_type
+msgid "Type"
+msgstr "النوع"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_price_unit
+msgid "Unit Price"
+msgstr "سعر الوحده "
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_line_wizard_product_uom
+msgid "Unit of Measuer"
+msgstr "الوحدة"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_partner_id
+msgid "Vendor"
+msgstr "المورد/المقاول"
+
+#. module: project_agreement_purchase
+#: selection:project.agreement.tendar.line.wizard,type:0
+msgid "View"
+msgstr "تجميعي"
+
+#. module: project_agreement_purchase
+#: model:ir.model.fields,field_description:project_agreement_purchase.field_project_agreement_tendar_wizard_wizard_type
+msgid "Wizard Type"
+msgstr "نوع المعالج"
+
+#. module: project_agreement_purchase
+#: model:ir.actions.act_window,help:project_agreement_purchase.product_template_agreement_action
+msgid "You must define a product for everything you sell, whether it's a physical product, a consumable or a service you offer to customers."
+msgstr "You must define a product for everything you sell, whether it's a physical product, a consumable or a service you offer to customers."
+
+#. module: project_agreement_purchase
+#: model:ir.model,name:project_agreement_purchase.model_project_agreement
+msgid "project.agreement"
+msgstr "project.agreement"
+
+#. module: project_agreement_purchase
+#: model:ir.model,name:project_agreement_purchase.model_project_agreement_planned
+msgid "project.agreement.planned"
+msgstr "project.agreement.planned"
+
+#. module: project_agreement_purchase
+#: model:ir.model,name:project_agreement_purchase.model_project_agreement_tendar_line_wizard
+msgid "project.agreement.tendar.line.wizard"
+msgstr "project.agreement.tendar.line.wizard"
+
+#. module: project_agreement_purchase
+#: model:ir.model,name:project_agreement_purchase.model_project_agreement_tendar_wizard
+msgid "project.agreement.tendar.wizard"
+msgstr "project.agreement.tendar.wizard"
+

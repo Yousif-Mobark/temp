@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_agreement_create,project.agreement,model_project_agreement,,1,1,1,1
+access_agreement_create_p,project.project,project.model_project_project,,1,1,1,1
+access_agreement_create_bu,crossovered.budget,account_budget.model_crossovered_budget,,1,1,1,1
+access_agreement_manager_ap,project.agreement.planned,model_project_agreement_planned,,1,1,1,1
+access_agreement_study_pp,product.product,purchase.model_product_product,,1,1,1,1
+access_agreement_manager_ay,account.analytic.account,analytic.model_account_analytic_account,,1,1,1,1
+access_agreement_study_pu,product.uom,product.model_product_uom,,1,1,1,1
+access_agreement_create_bu_post,crossovered.budget.post,account_budget.model_account_budget_post,,1,1,1,1
+access_agreement_project_task,project.task.access,project.model_project_task,,1,0,0,0
+access_product_template,access.product.template,purchase.model_product_template,,1,1,1,1
+access_product_price_history,access.product.price.history,product.model_product_price_history,,1,1,1,1
+access_agreement_account_journal,access.agreement.account.journal,account.model_account_journal,,1,0,0,0

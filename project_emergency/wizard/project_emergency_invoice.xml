@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <record id="project_emergency_invoice_form" model="ir.ui.view">
+            <field name="name">project.emergency.invoice.form</field>
+            <field name="model">project.emergency.invoice.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Emergency Invoice">
+                    <sheet>
+                        <group string="Invoice" col="4" colspan="2">
+
+                            <field name="emergency_id" readonly="1"/>
+                            <field string="Vendor" required="1" name="partner_id" context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1, 'default_company_type': 'company'}" domain="[('supplier', '=', True)]"/>
+                            <field name="amount"/>
+                            <field name="date"/>
+                            <field name="push"/>
+                            <field name="describe"/>
+                        </group>
+                         <group>
+                            <field name="attach_files_ids" widget="many2many_binary"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Create Invoice" name="button_create_invoice" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_emergency_invoice_wizard" model="ir.actions.act_window">
+            <field name="name">Emergency Invoice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.emergency.invoice.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_emergency_invoice_form"/>
+            <field name="context">{}</field>
+            <field name="target">new</field>
+        </record>
+
+
+
+    </data>
+</odoo>

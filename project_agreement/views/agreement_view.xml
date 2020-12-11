@@ -1,0 +1,220 @@
+<odoo>
+    <data>
+        <record id="view_project_agreement_form" model="ir.ui.view">
+            <field name="name">project.agreement.form</field>
+            <field name="model">project.agreement</field>
+            <field name="arch" type="xml">
+                <form string="Agreement">
+                    <header>
+                        <button name="wating_approve"  string="Start Studing" states="draft" type="object"  class="oe_highlight"/>
+                        <button name="approved"   string="Approved" states="wating_approve" type="object" class="oe_highlight"/>
+                        <button name="refuse"  string="Refused" states="wating_approve" type="object" class="oe_highlight"/>
+                        <button icon="fa-cogs"  name="budget_generating" string="Budget Generating"  type="object" groups="account.group_account_manager"  class="oe_highlight" attrs="{'invisible':['|',('state','!=','approved'),('agreement_type','=','emergency')]}"/>
+                        <button name="implementing"  string="Start Implementing" type="object" class="oe_highlight" attrs="{'invisible':['|',('state','!=','budget_generating'),('agreement_type','=','emergency')]}"/>
+                         <button name="implementing" string="Start Implementing" type="object" class="oe_highlight" attrs="{'invisible':['|',('state','!=','approved'),('agreement_type','!=','emergency')]}"/>
+                        <button name="closed"  string="Close" states="implementing" type="object"  class="oe_highlight" />
+                        <field name="state" clickable="1" widget="statusbar" statusbar_visible="draft,wating_approve,approved,budget_generating,implementing,closed,refuse" />
+                    </header>
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <field  name="name" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="code" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="start_date" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="end_date" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="agreement_type" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="customer_id" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="currency_id" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="project_manager" />
+                            <field name="project_id" attrs="{'invisible':[('state' , 'not in' , ['approved','budget_generating','implementing','closed']),('agreement_type','!=','emergency')]
+                                                             , 'required':[('agreement_type','=','emergency')], 'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="budget_type" attrs="{'required':('state','=','approved')}"/>
+                            <field name="budget_id" attrs="{'invisible':[('state' , 'not in' , ['budget_generating','implementing','closed'])], 'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                             <field name="agreement_cost" readonly="True"/>
+                            <field name="agreement_revenue" readonly="True"/>
+                            <field name="vat_percentage"/>
+                            <field name="vat_amount"/>
+                            <field name="total_after_vat"/>
+                        </group>
+                        <notebook>
+                            <page string="agreement Planned" name="agreement_planned">
+                                <field name="project_agreement_planned_line_ids" mode="tree" context="{'default_state':state,'default_agreement_type':agreement_type}">
+                                    <tree>
+                                        <field name="code"/>
+                                        <field name="name"/>
+                                        <field name="product_uom"/>
+                                        <field name="required_quantity" sum="required_quantity"/>
+                                        <field name="delivered_quantity" attrs="{'invisible':[('state','not in',['implementing','closed'])]}" sum="delivered_quantity"/>
+                                        <field name="residual_quantity" attrs="{'invisible':[('state','not in',['implementing','closed'])]}" sum="residual_quantity"/>
+                                        <field name="total" sum="total"/>
+                                        <field name="revenue" sum="revenue"/>
+                                        <field name="revenue_amount" sum="revenue_amount"/>
+                                        <field name="parent_id" invisible="True"/>
+                                        <field name="state" />
+                                    </tree>
+                                </field>
+
+                            </page>
+<page string="Project Manager Recommendations" name="project_manager_recom" groups="project_agreement.group_agreement_project_civil,project_agreement.group_agreement_project_emergency,project_agreement.group_agreement_project_construction">
+                                <field name="project_manager_recom" attrs="{'readonly':[('state','in',['closed','refuse'])]}"/>
+                            </page>
+                            <page string="Finance Manager Recommendations" name="finance_manager_recom" groups="account.group_account_manager">
+                                <field name="finance_manager_recom" attrs="{'readonly':[('state','in',['closed','refuse'])]}"/>
+                            </page>
+                            <page string="Assistant Exceutive Manager Recommendations" name="assistant_executive_manager_recom" groups="hr_user_group.group_hr_assistant_executive">
+                                <field name="assistant_executive_manager_recom" attrs="{'readonly':[('state','in',['closed','refuse'])]}"/>
+                            </page>
+                            <page string="Exceutive Manager Recommendations" name="executive_manager_recom" groups="hr_user_group.group_hr_executive_director">
+                                <field name="executive_manager_recom" attrs="{'readonly':[('state','in',['closed','refuse'])]}"/>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                     <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="view_project_agreement_tree" model="ir.ui.view">
+            <field name="name">project.agreement.tree</field>
+            <field name="model">project.agreement</field>
+            <field name="arch" type="xml">
+                <tree string="baptism">
+                    <field  name="name"/>
+                    <field name="code"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="agreement_type"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_project_agreement" model="ir.actions.act_window">
+            <field name="name">Project Agreement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.agreement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!--agreements line-->
+        <record id="view_project_agreement_planned_form" model="ir.ui.view">
+            <field name="name">project.agreement.planned.form</field>
+            <field name="model">project.agreement.planned</field>
+            <field name="arch" type="xml">
+                <form string="Agreement" create="0">
+                    <header>
+                        <field name="state" widget="statusbar" clickable="1" readonly="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Item Name" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+
+                            </h1>
+                        </div>
+                        <group colspan="4" col="4">
+                            <field name="purchase_ok" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="sale_ok" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="stock_ok" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="code" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="type" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="responsible_id" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="progress" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="parent_id" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                            <field name="agreement_id" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                        </group>
+                        <notebook>
+                            <page name="costs" string="Costs">
+                                <group attrs="{'invisible':[('state','in',['draft' , 'wating_approve'])]}">
+                                    <field name="product_id" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                                    <field name="agreement_type" invisible="1" />
+                                    <!-- <field name="currency_id"/> -->
+                                </group>
+                                <group colspan="4" col="4" name="planned" string="Planned">
+                                    <field name="required_quantity" attrs="{'required':[('agreement_type','!=','emergency')],'readonly':['|',('agreement_type','=','emergency'),('state','not in',['draft','wating_approve'])]}"/>
+                                    <field name="price_unit" attrs="{'readonly':['|',('state','not in',['draft','wating_approve'])] , 'required':[('agreement_type','=','emergency')]}"/>
+                                    <field name="product_uom" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                                    <field name="revenue" attrs="{'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                                    <field name="total" readonly="1" attrs="{'required':[('agreement_type','!=','emergency')],'readonly':[('state','not in',['draft','wating_approve'])]}"/>
+                                    <field name="revenue_amount" />
+                                </group>
+                                <group colspan="4" col="4" name="deliverquantity" string="Deliver Quantity" attrs="{'invisible':[('state','not in',['implementing','closed'])]}">
+                                    <field name="delivered_quantity" />
+                                    <field name="residual_quantity"  />
+                                </group>
+                            </page>
+                            <page name="budget" string="Budget" attrs="{'invisible':[('state','in',['draft' , 'wating_approve'])]}" groups="account.group_account_manager">
+                                <group colspan="4" col="4">
+                                    <field name="is_cost_center" attrs="{'readonly':[('state','not in',['approved'])]}" />
+                                    <field name="set_to_child" attrs="{'readonly':[('state','not in',['approved'])]}"/>
+                                    <field name="account_id"  attrs="{'readonly':[('state','not in',['approved'])], 'required':[('state','=','approved')]}" />
+                                    <field name="analytic_account_id" attrs="{'readonly':[('state','not in',['approved'])]}" />
+                                </group>
+                            </page>
+                             <page name="items" string="Items" attrs="{'invisible':['|',('id', '=', False),('type','!=','view')],'readonly':[('state','not in',['draft','wating_approve'])]}">
+                                 <field name="child_ids" context="{'default_state':state , 'default_agreement_id':agreement_id,'default_parent_id':id}">
+                                    <tree>
+                                        <field name="code"/>
+                                        <field name="name"/>
+                                        <field name="product_uom"/>
+                                        <field name="required_quantity"/>
+                                        <field name="delivered_quantity"/>
+                                        <field name="residual_quantity"/>
+                                        <field name="total"/>
+                                        <field name="revenue"/>
+                                        <field name="revenue_amount"/>
+                                    </tree>
+                                 </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_project_agreement_planned_tree" model="ir.ui.view">
+            <field name="name">project.agreement.planned.tree</field>
+            <field name="model">project.agreement.planned</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="responsible_id"/>
+                    <field name="agreement_id"/>
+                    <field name="total"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_agreement_line" model="ir.actions.act_window">
+            <field name="name">Project Agreement Lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.agreement.planned</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+         <record model="ir.ui.view" id="crossovered_budget_view_form_agreement">
+            <field name="name">crossovered.budget.view.form.agreement</field>
+            <field name="model">crossovered.budget</field>
+            <field name="inherit_id" ref="account_budget.crossovered_budget_view_form"/>
+             <field name="arch" type="xml">
+                <xpath expr='//field[@name="name"]' position="before">
+                    <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="button_agreements"
+                                    string="Agreements" type="object"
+                                    attrs="{'invisible':[('agreement_ids','=',[])]}" icon="fa-bars"/>
+                    </div>
+                      <field name="agreement_ids" invisible="True" />
+                </xpath>
+             </field>
+         </record>
+        <!-- Menues -->
+        <menuitem id="menu_project_agreement" name="Project Agreements" />
+        <menuitem name="Agreements"   id="menu_main_agreement"  parent="menu_project_agreement" sequence="1" />
+        <menuitem name="Agreement"   id="menu_sub_agreement" action="action_project_agreement" parent="menu_main_agreement" sequence="2"/>
+        <menuitem name="Agreement Lines"   id="menu_agreement_line" action="action_agreement_line" parent="menu_main_agreement" sequence="3"/>
+    </data>
+</odoo>

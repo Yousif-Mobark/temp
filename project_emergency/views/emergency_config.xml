@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <!--  Custody Configuration -->
+        <record id="emergency_general_settings_form_view" model="ir.ui.view">
+            <field name="name">Emergency Settings</field>
+            <field name="model">emergency.general.settings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="Apply" type="object" name="set_company_values" class="oe_highlight"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </header>
+                    <group string="Company" col="2" colspan="2">
+                        <field name="company_id" readonly="1"/>
+                    </group>
+                    <group string="Custody Account" col="4" colspan="2">
+                        <field name="emergency_account_id"/>
+                        <field name="emergency_account_exp_id"/>
+                        <field name="emergency_journal_id"/>
+                    </group>
+                    <div>
+                        <span>
+                            (*) This configuration is related to the company you're logged into.
+                        </span>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="emergency_general_settings_action" model="ir.actions.act_window">
+            <field name="name">Emergency Settings</field>
+            <field name="res_model">emergency.general.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_general_emergency_settings" parent="account.menu_finance_configuration" name="Emergency Account Settings"
+                  sequence="2" action="emergency_general_settings_action"/>
+
+    </data>
+</odoo>

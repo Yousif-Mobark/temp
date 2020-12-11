@@ -1,0 +1,40 @@
+ <odoo>
+    <data>
+
+
+        <record id="agreement_sale_wiz_view" model="ir.ui.view">
+            <field name="name">Agreement Sale Order</field>
+            <field name="model">agreement.sale</field>
+            <field name="arch" type="xml">
+                <form string="Items">
+                    <group colspan="2" col="4">
+                        <field name="agreement_id" required="1"/>
+                        <field name="customer_id" required="1"/>
+                        <field name="agreement_line_id"  domain="[('agreement_id','=',agreement_id),('sale_ok','=',True)]" required="1"/>
+                        <field name="product_id" required="1"/>
+                        <field name="uom" required="1"/>
+                        <field name="required_quantity" required="1"/>
+                        <field name="delivered_quantity" required="1"/>
+                        <field name="residual_quantity" required="1"/>
+                    </group>
+                    <footer>
+                        <button icon="fa-cogs" string="Deliver Order" name="create_sale_order" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" class="btn-default"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_agreement_line_sale" model="ir.actions.act_window">
+            <field name="name">Item Deliver</field>
+            <field name="res_model">agreement.sale</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="agreement_sale_wiz_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+
+</data>
+ </odoo>

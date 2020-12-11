@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_purchaseorder_contract_document">
+    <t t-call="web.external_layout">
+        <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+        <div class="page" dir="rtl">
+            <center><strong> عقد إتفاق <span t-field="o.agreement_id.name"/></strong></center>
+            <div class="row" >
+                <div>
+                    <p><strong> التاريخ :</strong><span t-field="o.date_approve"/> </p>
+                    <p><strong> رقم العقد :</strong><span t-field="o.name"/> </p>
+                    <p><strong> حالة العقد :</strong> جيد </p>
+                    <p><strong> تاريخ الإستلام الإبتدائي :</strong><span t-field="o.start_date"/> </p>
+                    <p><strong> تاريخ الإستلام النهائي :</strong><span t-field="o.end_date"/> </p>
+                    <p><strong> إجمالي قيمة العقد :</strong><span t-field="o.amount_untaxed"/> </p>
+                    <!--strong> قيمة الدفعة المقدمة :<span t-esc="sum([line.amount for line in o.order_line])" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/> </strong>
+                    <strong> نسبة الدفعة المقدمة :<p t-field="o.amount_untaxed"/> </strong-->
+                    <p><strong> مقاول الباطن :</strong><span t-field="o.partner_id.name"/> </p>
+                    <p><strong> عنوان المقاول :</strong><span t-field="o.partner_id.street"/> </p>
+                    <p><strong> تليفون المقاول :</strong><span t-field="o.partner_id.phone"/> </p>
+                    <p><strong> هاتف المقاول :</strong><span t-field="o.partner_id.mobile"/> </p>
+                </div>
+            </div>
+
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th class="text-center"><strong>البند</strong></th>
+                        <th class="text-center"><strong>الكمية</strong></th>
+                        <th class="text-center"><strong>قيمة الوحدة</strong></th>
+                        <th class="text-center"><strong>الإجمالي</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.order_line" t-as="line">
+                        <td>
+                            <span t-field="line.name"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.product_qty"/>
+                            <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.price_unit"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.price_subtotal"
+                                t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-xs-4 pull-right">
+                    <table class="table table-condensed">
+                        <tr class="border-black">
+                            <td><strong>Subtotal</strong></td>
+                            <td class="text-right">
+                                <span t-field="o.amount_untaxed"
+                                    t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Taxes</td>
+                            <td class="text-right">
+                                <span t-field="o.amount_tax"
+                                    t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                            </td>
+                        </tr>
+                        <tr class="border-black">
+                            <td><strong>Total</strong></td>
+                            <td class="text-right">
+                                <span t-field="o.amount_total"
+                                    t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <p t-field="o.notes"/>
+            <div class="oe_structure"/>
+        </div>
+    </t>
+</template>
+
+<template id="report_purchaseorder_contract">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="project_agreement_purchase.report_purchaseorder_contract_document" t-lang="o.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+</odoo>

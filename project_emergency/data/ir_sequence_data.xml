@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for sale.order -->
+        <record id="seq_project_emergency_confirmation" model="ir.sequence">
+            <field name="name">Project Emergency Confirmation Seq</field>
+            <field name="code">project.emergency.confirmation</field>
+            <field name="prefix">Conf</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

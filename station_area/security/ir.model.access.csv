@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_agreement_manager,station.station,model_station_station,,1,1,1,0
+access_project_manager,station.station,model_station_station,,1,1,1,0
+access_project_manager_ar,area.area,model_area_area,,1,1,1,0
+access_project_manager_ar,area.area,model_area_area,,1,1,1,0

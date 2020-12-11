@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+
+        <record id="project_requisition_civil_access_rule" model="ir.rule">
+            <field name="name">Project Requisition Civil Access</field>
+            <field name="model_id" ref="purchase_requisition.model_purchase_requisition"/>
+            <field name="domain_force">[('agreement_id.agreement_type','=','civil')]</field>
+            <field name="groups" eval="[(4,ref('project_agreement.group_agreement_project_civil'))]"/>
+        </record>
+        <record id="project_purchase_civil_access_rule" model="ir.rule">
+            <field name="name">Project Civil Purchase Access</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="domain_force">[('agreement_id.agreement_type','=','civil')]</field>
+            <field name="groups" eval="[(4,ref('project_agreement.group_agreement_project_civil'))]"/>
+        </record>
+
+        <record id="project_purchase_line_civil_access_rule" model="ir.rule">
+            <field name="name">Project Civil Purchase Line Access</field>
+            <field name="model_id" ref="purchase.model_purchase_order_line"/>
+            <field name="domain_force">[('agreement_id.agreement_type','=','civil')]</field>
+            <field name="groups" eval="[(4,ref('project_agreement.group_agreement_project_civil'))]"/>
+        </record>
+
+        <record id="project_requisition_construction_access_rule" model="ir.rule">
+            <field name="name">Project Requisition Construction Access</field>
+            <field name="model_id" ref="purchase_requisition.model_purchase_requisition"/>
+            <field name="domain_force">[('agreement_id.agreement_type','=','construction')]</field>
+            <field name="groups" eval="[(4,ref('project_agreement.group_agreement_project_construction'))]"/>
+        </record>
+        <record id="project_purchase_construction_access_rule" model="ir.rule">
+            <field name="name">Project Construction Purchase Access</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="domain_force">[('agreement_id.agreement_type','=','construction')]</field>
+            <field name="groups" eval="[(4,ref('project_agreement.group_agreement_project_construction'))]"/>
+        </record>
+
+        <record id="project_purchase_line_construction_access_rule" model="ir.rule">
+            <field name="name">Project Construction Purchase Line Access</field>
+            <field name="model_id" ref="purchase.model_purchase_order_line"/>
+            <field name="domain_force">[('agreement_id.agreement_type','=','construction')]</field>
+            <field name="groups" eval="[(4,ref('project_agreement.group_agreement_project_construction'))]"/>
+        </record>
+
+        <!--record id="project_manager_access_rule" model="ir.rule">
+            <field name="name">Project manager Agreement Access</field>
+            <field name="model_id" ref="model_project_agreement"/>
+            <field name="domain_force">[('project_id.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4,ref('group_agreement_project_manager'))]"/>
+        </record>
+        <record id="project_manager_line_access_rule" model="ir.rule">
+            <field name="name">Project manager Agreement Line Access</field>
+            <field name="model_id" ref="model_project_agreement_planned"/>
+            <field name="domain_force">[('project_id.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4,ref('group_agreement_project_manager'))]"/>
+        </record-->
+
+        <record id="project_agreement_access_all" model="ir.rule">
+            <field name="name">Project requisition Access All</field>
+            <field name="model_id" ref="purchase_requisition.model_purchase_requisition"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4,ref('hr_user_group.group_hr_assistant_executive')),(4,ref('hr_user_group.group_hr_executive_director'))]"/>
+        </record>
+        <record id="project_agreement_line_access_all" model="ir.rule">
+            <field name="name">Project purchase Access All</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4,ref('hr_user_group.group_hr_assistant_executive')),(4,ref('hr_user_group.group_hr_executive_director'))]"/>
+        </record>
+    </data>
+</odoo>

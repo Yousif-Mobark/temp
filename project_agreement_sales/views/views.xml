@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+
+        <record id="sale_order_project_agreement_form" model="ir.ui.view">
+            <field name="name">sale.order.project.agreement.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="partner_id"]' position="before">
+                  <field name="agreement_id" />
+                </xpath>
+                <xpath expr='//field[@name="order_line"]' position="attributes">
+                    <attribute name="context">{'default_agreement_id':agreement_id}</attribute>
+                </xpath>
+                <xpath expr='//field[@name="order_line"]/tree/field[@name="product_id"]' position="after">
+                    <field name="agreement_id" invisible="1"/>
+                    <field name="agreement_line_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+      <record id="view_project_agreement_sale_form_inherit" model="ir.ui.view">
+            <field name="name">project.agreement.sale.form.inherit</field>
+            <field name="model">project.agreement</field>
+            <field name="inherit_id" ref="project_agreement.view_project_agreement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//header' position="inside">
+                  <button name="%(action_agreement_line_sale)d" type="action" context="{'current_id':id,'default_agreement_id':id}" string="Deliver To Customer" states="implementing"  class="oe_highlight" attrs="{'invisible':['|',('state','!=','implementing'),('agreement_type','=','emergency')]}"/>
+                </xpath>
+            </field>
+      </record>
+
+  </data>
+
+</odoo>

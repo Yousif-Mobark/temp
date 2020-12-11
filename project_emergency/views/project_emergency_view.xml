@@ -1,0 +1,112 @@
+<odoo>
+    <data>
+        <!--agreements line-->
+        <record id="view_project_emergency_confirmation_form" model="ir.ui.view">
+            <field name="name">project.emergency.confirmation.form</field>
+            <field name="model">project.emergency.confirmation</field>
+            <field name="arch" type="xml">
+                <form string="Project Emergency Confirmatio">
+                    <header>
+                        <button name="action_progress" string="Confirm" states="draft" type="object" class="oe_stat_button"/>
+                        <button name="action_done" string="Approve" states="in_progress" type="object" class="oe_stat_button"/>
+                        <button name="action_close" string="Close" states="done" type="object" class="oe_stat_button"/>
+                        <button name="action_draft" string="reset to draft" states="in_progress" type="object" class="oe_stat_button"/>
+                        <button name="action_draft" string="reset to draft" states="done,close" type="object" class="oe_stat_button" groups="project_agreement.group_agreement_project_emergency"/>
+                        <field name="attachment_id" invisible="1"/>
+                        <button class="oe_stat_button" type="action" string="Create Invoice" groups="project_agreement.group_agreement_project_emergency,station_area.group_station_supervisior,station_area.group_station_manager" context="{'emergency_id':id,'default_attach_files_ids':attachment_id}" attrs="{'invisible':[('state','=','close')]}" name="%(action_emergency_invoice_wizard)d"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_invoice" class="oe_stat_button" icon="fa-money" type="object">
+                                <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <!-- <div class="oe_title"><h1><field name="name" placeholder="Item Name"/></h1></div> -->
+                        <group colspan="4" col="4">
+                            <field name="agreement_id" required="1" attrs="{'readonly':[('state','in', ['done','close'])]}"/>
+                            <field name="project_id" readonly="1" attrs="{'readonly':[('state','in', ['done','close'])]}"/>
+                            <field name="station_id" required="1" attrs="{'readonly':[('state','in', ['done','close'])]}"/>
+                            <field name="area_id" required="1" attrs="{'readonly':[('state','in', ['done','close'])]}"/>
+                            <field name="start_date" required="1" attrs="{'readonly':[('state','in', ['done','close'])]}"/>
+                            <field name="end_date" required="1" attrs="{'readonly':[('state','in', ['done','close'])]}"/>
+                            <field name="attachment_id" widget="many2many_binary" class="oe_inline" required="True"/>
+
+                        </group>
+                        <div>
+                            <field name="project_emg_conf_line_ids" attrs="{'readonly':[('state','in', ['done','close'])]}" context="{'default_start_date':start_date,'default_end_date':end_date,'default_agreement_id':agreement_id}">
+                                <tree editable="bottom">
+                                    <field name="agreement_id" invisible="1"/>
+                                    <field name="agreement_line_id" required="1" domain="[('agreement_id','=',agreement_id)]"/>
+                                    <field name="product_uom" required="1" options="{'no_create': True, 'no_create_edit':True}"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="product_uom"/>
+                                    <field name="quantity"/>
+                                    <field name="q_sum"/>
+                                    <field name="price_unit"/>
+                                    <field name="total_price"/>
+                                </tree>
+                            </field>
+                        </div>
+                        <group colspan="6" col="6">
+                            <field name="amount"/>
+                            <field name="invoiced_amount"/>
+                            <field name="residual_amount"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_project_emergency_confirmation_tree" model="ir.ui.view">
+            <field name="name">project.emergency.confirmation.tree</field>
+            <field name="model">project.emergency.confirmation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="agreement_id"/>
+                    <field name="project_id"/>
+                    <field name="station_id"/>
+                    <field name="area_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_agreement_line" model="ir.actions.act_window">
+            <field name="name">Project Emergency Confirmation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.emergency.confirmation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="station_form_view_inherit" model="ir.ui.view">
+            <field name="name">station.form.view.inherit</field>
+            <field name="model">station.station</field>
+            <field name="inherit_id" ref="station_area.station_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                <div class="oe_button_box" name="button_box">
+                             <button name="action_open_emergency" class="oe_stat_button" icon="fa-tasks" type="object">
+                            <field name="emergency_count" widget="statinfo" string="Emergency"/>
+                        </button>
+                </div>
+                </xpath>
+                <xpath expr="//notebook" position="after">
+                     <group colspan="6" col="6">
+                            <field name="amount" required="1" groups="project_agreement.group_agreement_project_emergency"/>
+                            <field name="invoiced_amount"/>
+                            <field name="residual_amount"/>
+                        </group>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="menu_project_agreement_main" parent="project_agreement.menu_project_agreement" name="Project Emergancy"/>
+        <menuitem name="Project Emergancy" id="menu_main_porject_emg" parent="menu_project_agreement_main" action="action_agreement_line"/>
+    </data>
+</odoo>

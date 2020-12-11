@@ -1,0 +1,95 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* purchase_contractor
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-27 16:03+0000\n"
+"PO-Revision-Date: 2020-01-27 16:03+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_contractor
+#: model:ir.actions.act_window,help:purchase_contractor.action_purchase_contract_po
+msgid "Click to create a quotation that will be converted into a purchase order."
+msgstr "Click to create a quotation that will be converted into a purchase order."
+
+#. module: purchase_contractor
+#: model:ir.actions.act_window,help:purchase_contractor.action_purchase_contractor_rfq
+msgid "Click to create a request for quotation."
+msgstr "انقر لإنشاء طلب شراء مبدئي."
+
+#. module: purchase_contractor
+#: selection:purchase.order,type:0
+msgid "Contract"
+msgstr "العقود"
+
+#. module: purchase_contractor
+#: model:ir.actions.act_window,help:purchase_contractor.action_purchase_contractor_rfq
+msgid "Most propositions of purchase orders are created automatically\n"
+"            by Odoo based on inventory needs."
+msgstr "Most propositions of purchase orders are created automatically\n"
+"            by Odoo based on inventory needs."
+
+#. module: purchase_contractor
+#: selection:purchase.order,type:0
+msgid "Order"
+msgstr "العقد"
+
+#. module: purchase_contractor
+#: model:ir.ui.menu,name:purchase_contractor.menu_purchase_contractor
+msgid "Purchase Contractor"
+msgstr "مقاولي الباطن"
+
+#. module: purchase_contractor
+#: model:ir.model,name:purchase_contractor.model_purchase_order
+msgid "Purchase Order"
+msgstr "عقد"
+
+#. module: purchase_contractor
+#: model:ir.actions.act_window,name:purchase_contractor.action_purchase_contract_po
+#: model:ir.ui.menu,name:purchase_contractor.manu_purchase_contractor_po
+msgid "Purchase Orders"
+msgstr "العقد"
+
+#. module: purchase_contractor
+#: model:ir.ui.menu,name:purchase_contractor.manu_purchase_contractor_rfq
+msgid "Requests for Quotation"
+msgstr "العقد المبدئي"
+
+#. module: purchase_contractor
+#: model:ir.actions.act_window,help:purchase_contractor.action_purchase_contractor_rfq
+msgid "The quotation contains the history of the discussion/negotiation\n"
+"            you had with your vendor. Once confirmed, a request for\n"
+"            quotation is converted into a purchase order."
+msgstr "The quotation contains the history of the discussion/negotiation\n"
+"            you had with your vendor. Once confirmed, a request for\n"
+"            quotation is converted into a purchase order."
+
+#. module: purchase_contractor
+#: model:ir.model.fields,field_description:purchase_contractor.field_purchase_order_type
+msgid "Type"
+msgstr "النوع"
+
+#. module: purchase_contractor
+#: model:ir.actions.act_window,help:purchase_contractor.action_purchase_contract_po
+msgid "Use this menu to search within your purchase orders by\n"
+"                references, vendor, products, etc. For each purchase order,\n"
+"                you can track the related discussion with the vendor, control\n"
+"                the products received and control the vendor bills."
+msgstr "Use this menu to search within your purchase orders by\n"
+"                references, vendor, products, etc. For each purchase order,\n"
+"                you can track the related discussion with the vendor, control\n"
+"                the products received and control the vendor bills."
+
+#. module: purchase_contractor
+#: model:ir.actions.act_window,name:purchase_contractor.action_purchase_contractor_rfq
+msgid "purchase contractor"
+msgstr "عقودات"
+

@@ -1,0 +1,167 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_agreement_sales
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-20 08:29+0000\n"
+"PO-Revision-Date: 2019-10-20 08:29+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_agreement_id
+#: model:ir.model.fields,field_description:project_agreement_sales.field_sale_order_agreement_id
+#: model:ir.model.fields,field_description:project_agreement_sales.field_sale_order_line_agreement_id
+msgid "Agreement"
+msgstr "الإتفاقية"
+
+#. module: project_agreement_sales
+#: model:ir.model,name:project_agreement_sales.model_agreement_sale
+msgid "Agreement Sale Order"
+msgstr "مستخلصات الإتفاقية"
+
+#. module: project_agreement_sales
+#: model:ir.ui.view,arch_db:project_agreement_sales.agreement_sale_wiz_view
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_customer_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: project_agreement_sales
+#: code:addons/project_agreement_sales/wizard/agreement_sale_wizard.py:45
+#, python-format
+msgid "Deliver"
+msgstr "تسليم"
+
+#. module: project_agreement_sales
+#: model:ir.ui.view,arch_db:project_agreement_sales.agreement_sale_wiz_view
+msgid "Deliver Order"
+msgstr "طلب تسليم"
+
+#. module: project_agreement_sales
+#: model:ir.ui.view,arch_db:project_agreement_sales.view_project_agreement_sale_form_inherit
+msgid "Deliver To Customer"
+msgstr "تسليم للعميل"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_delivered_quantity
+msgid "Delivered Qty"
+msgstr "الكمية التي تم تسليمها"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_project_agreement_deliver_order_ids
+#: model:ir.model.fields,field_description:project_agreement_sales.field_project_agreement_planned_deliver_ids
+msgid "Delivers"
+msgstr "المستخلصات"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_project_agreement_deliver_line_ids
+msgid "Delivers Line"
+msgstr "بنود التسليم"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_agreement_line_id
+#: model:ir.model.fields,field_description:project_agreement_sales.field_sale_order_line_agreement_line_id
+msgid "Item"
+msgstr "البند"
+
+#. module: project_agreement_sales
+#: model:ir.actions.act_window,name:project_agreement_sales.action_agreement_line_sale
+msgid "Item Deliver"
+msgstr "بند التسليم"
+
+#. module: project_agreement_sales
+#: model:ir.ui.view,arch_db:project_agreement_sales.agreement_sale_wiz_view
+msgid "Items"
+msgstr "العناصر"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale___last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: project_agreement_sales
+#: model:ir.model,name:project_agreement_sales.model_sale_order
+msgid "Quotation"
+msgstr "عرض مبدئي"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_required_quantity
+msgid "Required Qty"
+msgstr "الكمية المطلوبة"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_residual_quantity
+msgid "Residual Qty"
+msgstr "الكمية المتبقية"
+
+#. module: project_agreement_sales
+#: model:ir.model,name:project_agreement_sales.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "سطر أمر المبيعات"
+
+#. module: project_agreement_sales
+#: model:ir.model.fields,field_description:project_agreement_sales.field_agreement_sale_uom
+msgid "Unit of Measuer"
+msgstr "وحدة القياس"
+
+#. module: project_agreement_sales
+#: model:ir.model,name:project_agreement_sales.model_project_agreement
+msgid "project.agreement"
+msgstr "project.agreement"
+
+#. module: project_agreement_sales
+#: model:ir.model,name:project_agreement_sales.model_project_agreement_planned
+msgid "project.agreement.planned"
+msgstr "project.agreement.planned"
+

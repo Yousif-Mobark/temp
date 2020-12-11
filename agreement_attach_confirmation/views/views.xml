@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+<record id="view_project_agreement_confirmation_form" model="ir.ui.view">
+            <field name="name">view.project.agreement.confirmation.form</field>
+            <field name="model">agreement.attach.confirmation</field>
+            <field name="arch" type="xml">
+                <form string="Confirmation">
+                    <header>
+                        <button name="approved" string="Approved" states="draft" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,wating_approve,approved,budget_generating,implementing,closed,refuse" />
+                    </header>
+                    <sheet>
+                        <group  col="2">
+                            <field  name="name" readonly="True"/>
+                            <field  name="type"/>
+                            <field name="attach_id"/>
+                            <field name="date"/>
+                            <field name="agreement_id" />
+                            <field name="agreement_line_ids" widget="many2many_tags"  options="{'color_field': 'color', 'no_create_edit': True}" attrs="{'required':[('type','=','item')] , 'invisible':['|',('type','!=','item'),('agreement_id','=',False)]}" domain="[('agreement_id','=',agreement_id)]"/>
+                            <field name="customer_id"/>
+                            <field name="project_id" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+      <record id="view_project_agreement_confirmation_tree" model="ir.ui.view">
+            <field name="name">project.agreement.confirmation.tree</field>
+            <field name="model">agreement.attach.confirmation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="agreement_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record id="action_agreement_confirmation" model="ir.actions.act_window">
+            <field name="name">Project Agreement Confirmation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">agreement.attach.confirmation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+          <record id="view_project_agreement_planned_form_inherit" model="ir.ui.view">
+            <field name="name">project.agreement.planned.form</field>
+            <field name="model">project.agreement.planned</field>
+            <field name="inherit_id" ref="project_agreement.view_project_agreement_planned_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="parent_id"]' position="after">
+                   <field name="check_confirmaion" />
+                   </xpath>
+            </field>
+        </record>
+
+    <menuitem name="Confirmations" id="agreement_attach_confirmation_menu" parent="project_agreement.menu_main_agreement"
+              action="action_agreement_confirmation"/>
+  </data>
+</odoo>
