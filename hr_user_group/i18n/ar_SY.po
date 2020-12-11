@@ -1,0 +1,33 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hr_user_group
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-18 12:15+0000\n"
+"PO-Revision-Date: 2019-11-18 12:15+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_user_group
+#: model:res.groups,name:hr_user_group.group_hr_assistant_executive
+msgid "Assistant Executive"
+msgstr "مساعد المدير التنفيذي"
+
+#. module: hr_user_group
+#: model:ir.ui.menu,name:hr_user_group.hr_payroll_process_main_menu
+#: model:ir.ui.menu,name:hr_user_group.menu_hr_employee_process_main
+msgid "Employee Process"
+msgstr "إجراءات الموظف"
+
+#. module: hr_user_group
+#: model:res.groups,name:hr_user_group.group_hr_executive_director
+msgid "Executive Director"
+msgstr "المدير التنفيذي"
+

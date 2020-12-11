@@ -1,0 +1,6 @@
+<odoo>
+  <data>
+    <menuitem parent="hr_payroll.menu_hr_payroll_root" id="hr_payroll_process_main_menu"  name="Employee Process" sequence="80"/>
+    <menuitem id="menu_hr_employee_process_main" name="Employee Process" parent="hr.menu_hr_root"  sequence="20"/>
+  </data>
+</odoo>
