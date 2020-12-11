@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['project','purchase' ,'account_invoicing', 'hr_user_group'],
+    'depends': ['project','purchase' ,'account_invoicing', 'account_budget','hr_user_group'],
 
     # always loaded
     'data': [
