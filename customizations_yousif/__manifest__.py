@@ -8,6 +8,8 @@
     'depends': ['emar_operation'],
     # always loaded
     'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'data/agreement_code_sequence.xml',
         'data/project_code_sequence.xml',
         'views/project_project_views.xml',
