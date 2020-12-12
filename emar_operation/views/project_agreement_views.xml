@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_project_agreement_form_inheirt" model="ir.ui.view">
+            <field name="name">project.agreement.form.inherit</field>
+            <field name="model">project.agreement</field>
+            <field name="inherit_id" ref="project_agreement.view_project_agreement_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='project_manager']" position="after">
+                    <field name="project_type" readonly="1"/>
+                    <field name="opportunity_type" readonly="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='budget_type']" position="after">
+                    <field name="customer_rfq" readonly="1"/>
+                    <field name="source_person" readonly="1"/>
+                    <field name="user_id" readonly="1"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
+s

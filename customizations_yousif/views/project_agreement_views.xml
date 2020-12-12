@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_project_agreement_form_inheirt" model="ir.ui.view">
+            <field name="name">project.agreement.form.inherit</field>
+            <field name="model">project.agreement</field>
+            <field name="inherit_id" ref="project_agreement.view_project_agreement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='project_manager']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='customer_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//page[@name='agreement_planned']" position="attributes">
+                    <attribute name="string">Main Contracting Items</attribute>
+                    <attribute name="attrs">
+                        {'invisible': [('project_type', 'not in', ('installation', 'supply_installation'))]}
+                    </attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
