@@ -28,6 +28,7 @@
         'security/stock_security.xml',
         'views/working_items_views.xml',
         'views/crm_lead_views.xml',
+        'views/project_agreement_views.xml',
         'views/product_views.xml',
         'views/analytic_account.xml',
         'views/account_bank_statement_views.xml',
