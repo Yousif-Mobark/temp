@@ -11,12 +11,18 @@ class ProjectAgreement(models.Model):
     def _get_default_code(self):
         return self.env['ir.sequence'].next_by_code('project.agreement.code.sequence') or ''
 
+    state = fields.Selection([('draft', 'Draft'), ('pq', 'PQ'),
+                              ('waiting_approve', 'Wating Approve'), ('approved', 'Approved'),
+                              ('budget_generating', 'Budget generating'),
+                              ('implementing', 'Implementing'), ('refuse', 'Refused'), ('closed', 'Closed')],
+                             default='draft', track_visibility='onchange')
+
     analytic_id = fields.Many2one('account.analytic', "Analytic Account")
     code = fields.Char('Code', states={'approved': [('readonly', True)]},
                        default=_get_default_code,
                        required=1)
     name = fields.Char('Project', required=True, states={'approved': [('readonly', True)]})
-    project_agreement_planned_line_ids = fields.One2many('project.raw.material.line')
+    project_raw_material_line_ids = fields.One2many('project.agreement.raw.material.line', 'agreement_id')
 
     @api.constrains('code')
     def _check_if_code_is_unique(self):
@@ -26,7 +32,7 @@ class ProjectAgreement(models.Model):
 
 
 class ProjectAgreementRMLine(models.Model):
-    _name = 'project.raw.material.line'
+    _name = 'project.agreement.raw.material.line'
 
     @api.constrains("revenue")
     def check_revenue_percentage(self):
@@ -37,16 +43,18 @@ class ProjectAgreementRMLine(models.Model):
     def _getAccounts(self):
         return [('user_type_id', '=', self.env.ref('account.data_account_type_expenses').id)]
 
-    name = fields.Char('Name', required=True)
+    @api.model
+    def _getProducts(self):
+        return [('categ_id.category_type', '=', 'raw_material')]
+
     code = fields.Char('Code')
     agreement_id = fields.Many2one('project.agreement', 'Agreement')
     project_id = fields.Many2one('project.project', related='agreement_id.project_id', store=True)
-    product_id = fields.Many2one('product.product', 'Name', readonly=1)
-    product_uom_id = fields.Many2one(related='product_id.uom_id')
+    product_id = fields.Many2one('product.product', 'Name', readonly=1, domain=_getProducts)
     required_quantity = fields.Float(string='Required Qty', )
     delivered_quantity = fields.Monetary(string='Delivered Qty')
     residual_quantity = fields.Monetary(compute='_compute_residual_quantity', string='Residual Qty')
-    product_uom = fields.Many2one('product.uom', 'Unit of Measuer', required=1)
+    product_uom = fields.Many2one('product.uom', 'Unit of Measure', required=1, related='product_id.uom_id')
     price_unit = fields.Monetary('Unit Price', digits=dp.get_precision('Price'))
     total = fields.Monetary(string='Total Cost', compute='compute_total_amount')
     currency_id = fields.Many2one('res.currency', 'Currency', required=True,

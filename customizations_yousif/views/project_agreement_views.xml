@@ -6,6 +6,7 @@
             <field name="model">project.agreement</field>
             <field name="inherit_id" ref="project_agreement.view_project_agreement_form"/>
             <field name="arch" type="xml">
+
                 <xpath expr="//field[@name='project_manager']" position="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
@@ -21,6 +22,34 @@
                         {'invisible': [('project_type', 'not in', ('installation', 'supply_installation'))]}
                     </attribute>
                 </xpath>
+
+                <xpath expr="//page[@name='agreement_planned']" position="after">
+                    <page string="Raw Material Lines"
+                          attrs="{'invisible': [('project_type', 'not in', ('supply', 'supply_installation'))]}"
+                          name="raw_material_lines">
+                        <field name="project_raw_material_line_ids" mode="tree"
+                               context="{'default_state':state,'default_agreement_type':agreement_type}">
+                            <tree>
+                                <field name="code"/>
+                                <field name="product_id"/>
+                                <field name="product_uom"/>
+                                <field name="required_quantity" sum="required_quantity"/>
+                                <field name="delivered_quantity"
+                                       attrs="{'invisible':[('state','not in',['implementing','closed'])]}"
+                                       sum="delivered_quantity"/>
+                                <field name="residual_quantity"
+                                       attrs="{'invisible':[('state','not in',['implementing','closed'])]}"
+                                       sum="residual_quantity"/>
+                                <field name="total" sum="total"/>
+                                <field name="revenue" sum="revenue"/>
+                                <field name="revenue_amount" sum="revenue_amount"/>
+                                <field name="parent_id" invisible="True"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
             </field>
         </record>
     </data>

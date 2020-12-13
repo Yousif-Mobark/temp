@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_agreement_sales_coordinator,project.agreement.access,project.model_project_task,,1,0,0,0
+access_agreement_manager_ap,project.agreement.raw.material.line.access,model_project_agreement_raw_material_line,,1,1,1,1
