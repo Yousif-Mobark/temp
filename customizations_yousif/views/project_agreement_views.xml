@@ -17,7 +17,7 @@
                     <attribute name="readonly">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="project_type"/>
+                    <field name="project_type" invisible="1"/>
                 </xpath>
                 <xpath expr="//page[@name='agreement_planned']" position="attributes">
                     <attribute name="string">Main Contracting Items</attribute>
