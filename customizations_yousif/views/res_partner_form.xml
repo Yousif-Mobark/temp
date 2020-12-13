@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='property_account_receivable_id']/.." position="before">
+                    <group string="special property">
+                    <field name="is_employee"/>
+                    <field name="is_subcontractor"/>
+                    <field name="custody_account" attrs="{'required':[('is_employee','=',True)]}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
