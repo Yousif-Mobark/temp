@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Menu items have been put here in order to have a central location for them -->
+        <!-- Main Menu -->
+        <menuitem id="contracting_menu_main" name="Contracting Operations" parent="project.menu_main_pm"/>
+        <!-- Purchase Menus -->
+        <menuitem id="contracting_menu_purchase" name="Purchase" parent="contracting_menu_main"/>
+
+        <menuitem id="contracting_menu_purchase_orders" action="purchase_form_action_project"
+                  name="Purchase Orders" sequence="1" parent="contracting_menu_purchase"/>
+
+        <menuitem id="contracting_menu_receipt_orders" action="action_picking_tree_all_project"
+                  name="Receipt Orders" sequence="2" parent="contracting_menu_purchase"/>
+
+        <menuitem id="contracting_menu_vendor_bills" action="action_invoice_tree_project"
+                  name="Vendor Bills" sequence="3" parent="contracting_menu_purchase"/>
+
+
+        <!-- Subcontracting Menus -->
+        <menuitem id="contracting_menu_subcontracting" name="Subcontracting" parent="contracting_menu_main"/>
+
+        <menuitem id="contracting_menu_sub_spb" action="action_invoice_tree_spb"
+                  name="Subcontracting Progress Bills" sequence="1" parent="contracting_menu_subcontracting"/>
+
+        <menuitem id="contracting_menu_sub_ipb" action="action_invoice_tree_ipb"
+                  name="Internal Progress Bills" sequence="2" parent="contracting_menu_subcontracting"/>
+
+
+        <!-- Master Data Menus -->
+        <menuitem id="contracting_menu_master_data" name="Master Data" parent="contracting_menu_main"/>
+
+        <menuitem id="contracting_menu_sub_work_item" action="sub_working_items_action"
+                  name="Sub working Items" sequence="1" parent="contracting_menu_master_data"/>
+
+        <menuitem id="contracting_menu_raw_material" action="raw_materials_action"
+                  name="Raw Material" sequence="2" parent="contracting_menu_master_data"/>
+
+        <menuitem id="contracting_menu_work_item" action="emar_operation.open_view_working_items"
+                  name="Working Items" sequence="3" parent="contracting_menu_master_data"/>
+
+        <menuitem id="contracting_menu_subcontractor" action="action_partner_subcontractor_form"
+                  name="Subcontractors" sequence="4" parent="contracting_menu_master_data"/>
+
+        <menuitem id="contracting_menu_uom" action="product.product_uom_form_action"
+                  name="Units Of Measure" sequence="5" parent="contracting_menu_master_data"/>
+
+
+    </data>
+</odoo>

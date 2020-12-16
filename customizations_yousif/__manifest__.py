@@ -13,7 +13,12 @@
         'data/agreement_code_sequence.xml',
         'data/project_code_sequence.xml',
         'views/project_project_views.xml',
-        'views/res_partner_form.xml',
+        'views/res_partner_views.xml',
+        'views/account_invoice_views.xml',
+        'views/product_product_views.xml',
+        'views/purchase_order_views.xml',
+        'views/stock_picking_views.xml',
         'views/project_agreement_views.xml',
+        'views/contracting_menu_items.xml',
     ],
 }

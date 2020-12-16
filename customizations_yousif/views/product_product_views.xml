@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Sub working items action -->
+        <record id="sub_working_items_action" model="ir.actions.act_window">
+            <field name="name">Sub Working Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('categ_id.category_type', '=', 'working_items')]</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new sub working item.
+                </p>
+            </field>
+        </record>
+
+        <!-- Raw materials action -->
+        <record id="raw_materials_action" model="ir.actions.act_window">
+            <field name="name">Sub Working Items</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('categ_id.category_type', '=', 'working_items')]</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to define a new raw material.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
