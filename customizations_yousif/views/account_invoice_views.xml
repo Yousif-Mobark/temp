@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
     <data>
 
         <!-- Subcontracting Progress Bill Form View -->
@@ -7,7 +8,7 @@
             <field name="name">account.invoice.subcontracting.bill.form</field>
             <field name="model">account.invoice</field>
             <field name="arch" type="xml">
-                <form string="Vendor Bill">
+                <form string="Subcontracting Progress Bill">
                     <header>
                         <button name="action_invoice_open" type="object" states="draft" string="Validate"
                                 class="oe_highlight" groups="account.group_account_invoice"/>
@@ -29,7 +30,7 @@
                         for this supplier. You can allocate them to mark this bill as paid.
                     </div>
                     <field name="has_outstanding" invisible="1"/>
-                    <sheet string="Vendor Bill">
+                    <sheet string="Subcontracting Progress Bill">
                         <div>
                             <label string="Draft Bill"
                                    attrs="{'invisible': ['|',('state','!=','draft'), ('type','!=','in_invoice')]}"/>
@@ -174,7 +175,7 @@
 
         <!-- Internal Progress Bill Form View -->
         <record id="account_invoice_internal_bill_form" model="ir.ui.view">
-            <field name="name">account.invoice.subcontracting.bill.form</field>
+            <field name="name">account.invoice.internal.bill.form</field>
             <field name="model">account.invoice</field>
             <field name="arch" type="xml">
                 <form string="Vendor Bill">
@@ -351,7 +352,8 @@
             <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
             <field eval="False" name="view_id"/>
             <field name="domain">[('type','=','in_invoice')]</field>
-            <field name="context">{'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}</field>
+            <field name="context">{'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}
+            </field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to record a new vendor bill.
@@ -364,11 +366,11 @@
             <field name="name">Subcontracting Progress Bills</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
-            <field eval="False" name="view_id"/>
+            <field name="view_mode">tree,form</field>
             <field name="domain">[('type','=','in_invoice')]</field>
-            <field name="context">{'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}</field>
-            <field name="form_view_id" ref="account_invoice_subcontracting_bill_form"/>
+            <field name="context">{'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}
+            </field>
+            <field name="view_id" ref="account_invoice_subcontracting_bill_form"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to record a subcontracting progress bill.
@@ -381,17 +383,50 @@
             <field name="name">Internal Progress Bills</field>
             <field name="res_model">account.invoice</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
-            <field eval="False" name="view_id"/>
+            <field name="view_mode">tree,form</field>
             <field name="domain">[('type','=','in_invoice')]</field>
-            <field name="context">{'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}</field>
-            <field name="form_view_id" ref="account_invoice_internal_bill_form"/>
+            <field name="context">
+                {'default_type': 'in_invoice', 'type': 'in_invoice', 'journal_type': 'purchase'}
+            </field>
+            <field name="view_id" ref="account_invoice_internal_bill_form"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to create an internal progress bill.
                 </p>
             </field>
         </record>
-
     </data>
+
+    <data noupdate="1">
+
+        <!-- Link forms to the specified actions -->
+        <!-- Subcontractor form link to action -->
+        <record id="project_subcontractor_bill_tree_action_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="action_invoice_tree_spb"/>
+        </record>
+
+        <record id="project_subcontractor_bill_form_action_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_invoice_subcontracting_bill_form"/>
+            <field name="act_window_id" ref="action_invoice_tree_spb"/>
+        </record>
+
+        <!-- Internal progress bill form link to action -->
+        <record id="project_internal_bill_tree_action_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="act_window_id" ref="action_invoice_tree_ipb"/>
+        </record>
+
+        <record id="project_internal_bill_form_action_view" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="account_invoice_internal_bill_form"/>
+            <field name="act_window_id" ref="action_invoice_tree_ipb"/>
+        </record>
+    </data>
+
 </odoo>
