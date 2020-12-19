@@ -11,16 +11,16 @@
                         <group >
                             <field name="project_type"/>
                             <field name="project_code"/>
-                            <field name="project_warehouse"/>
+                            <field name="project_warehouse" attrs="{'required':[('state','in',['under'])]}"/>
                             <field name="start_date"/>
                             <field name="end_date" />
                         </group>
                         <group>
-                            <field name="project_cost_account"/>
-                            <field name="company_operation_account"/>
-                            <field name="purchase_engineer"/>
+                            <field name="project_cost_account" attrs="{'required':[('state','in',['under'])]}"/>
+                            <field name="company_operation_account" attrs="{'required':[('state','in',['under'])]}"/>
+                            <field name="purchase_engineer" attrs="{'required':[('state','in',['under'])]}"/>
                             <field name="agreement_id" />
-                            <field name="raw_task"/>
+                            <field name="raw_task" attrs="{'required':[('state','in',['under'])]}"/>
                         </group>
                     </group>
                 </xpath>
@@ -82,6 +82,18 @@
                     <page string="Profile Data">
 
                     </page>
+                </xpath>
+
+                <xpath expr="//sheet" position="before">
+                    <header>
+                         <button name="start_study" string="Start Studing" states="draft" type="object" class="oe_highlight"/>
+                        <button name="generate_tasks" string="Generate Tasks" states="pend" type="object" class="oe_highlight"/>
+                        <button name="study_finish" string="Study Finish" states="under" type="object" class="oe_highlight"/>
+                        <button name="print_financial" class="oe_highlight" states="wait" type="object" string="Print Financial and Technical proposal" />
+                        <button string="Closed" states="run" class="oe_highlight" type="object" name="closed" />
+                        <button name="cancel" string="Cancel" states="draft,pend" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
                 </xpath>
             </field>
         </record>

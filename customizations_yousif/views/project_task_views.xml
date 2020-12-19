@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_project_project_form_inherit" model="ir.ui.view">
+            <field name="name">project.task.form.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="replace">
+                   <header>
+                       <button name="generate_subcontractor_doc" string="Generate Subcontractor Assigned Doc" type="object" states="under,run"/>
+                    <button name="generate_internal_assigned_doc" string="Generate Internal Assigned Doc" type="object" states="under,run"/>
+                    <button name="generate_custody_settlement_entry" string="Generate Custody Settlement Entry" type="object" states="under"/>
+                    <field name="state" widget="statusbar"/>
+                   </header>
+                </xpath>
+                <xpath expr="//field[@name='active']/.." position="after">
+                    <button name="receipt_orders" class="oe_stat_button" string="Receipt Orders" type="object"/>
+                    <button name="assign_docs"  class="oe_stat_button"  string="Assigned Documents" type="object"/>
+                    <button name="progress_bill"  class="oe_stat_button" string="Progress Bills" type="object"/>
+                    <button name="purchase_order"  class="oe_stat_button" string="Purchase Orders" type="object"/>
+                    <button name="custody_settlements" class="oe_stat_button"  string="Custody Settlements" type="object"/>
+                    <button name="all_entries"  class="oe_stat_button" string="Journal Entries" type="object"/>
+                </xpath>
+                <field name="name" position="replace">
+                    <field name="name" readonly="1"/>
+                </field>
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="working_item_palnned_cost"/>
+                    <field name="working_item_palnned_qty"/>
+                    <field name="raw_material_planned_cost"/>
+                    <field name="account_analytic_id" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="main_item_id" readonly="1"/>
+                    <field name="presale_eng"/>
+                    <field name="purchase_manager" />
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Working Item Lines"  >
+                        <field name="working_item_ids" >
+                            <tree editable="bottom">
+                                <field name="working_item" required="1"/>
+                                <field name="uom_cat_id" invisible="1"/>
+                                <field name="uom_id" domain="[('category_id','=',uom_cat_id)]" required="1"/>
+                                <field name="planned_unit_cost" required="1"/>
+                                <field name="planned_quantity" required="1" />
+                                <field name="line_planned_cost" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Raw materials lines by related main item">
+                        <field name="raw_material_ids" >
+                            <tree>
+                                <field name="code"/>
+                                <field name="product_id"/>
+                                <field name="product_uom"/>
+                                <field name="required_quantity" sum="required_quantity"/>
+                                <field name="delivered_quantity"
+                                       attrs="{'invisible':[('state','not in',['implementing','closed'])]}"
+                                       sum="delivered_quantity"/>
+                                <field name="residual_quantity"
+                                       attrs="{'invisible':[('state','not in',['implementing','closed'])]}"
+                                       sum="residual_quantity"/>
+                                <field name="total" sum="total"/>
+                                <field name="revenue" sum="revenue"/>
+                                <field name="revenue_amount" sum="revenue_amount"/>
+                                <field name="parent_id" invisible="True"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="custody settlement lines">
+                        <field name="custody_lines" >
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="amount"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+
+            </field>
+        </record>
+    </data>
+</odoo>

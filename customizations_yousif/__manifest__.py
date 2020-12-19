@@ -20,5 +20,8 @@
         'views/stock_picking_views.xml',
         'views/project_agreement_views.xml',
         'views/contracting_menu_items.xml',
+
+        'views/project_task_views.xml',
+
     ],
 }
