@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="assigned_line_view_tree" model="ir.ui.view">
+            <field name="name">assigned.line.tree.view</field>
+            <field name="model">assigned.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sub_working_item"/>
+                    <field name="planned_qty"/>
+                    <field name="remaining_qty"/>
+                    <field name="assigned_qty"/>
+                    <field name="planned_cost"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

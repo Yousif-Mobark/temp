@@ -19,6 +19,9 @@
         'views/purchase_order_views.xml',
         'views/stock_picking_views.xml',
         'views/project_agreement_views.xml',
+        'views/assigned_document_int_views.xml',
+        'views/assigned_document_sub_views.xml',
+        'views/assigned_line_views.xml',
         'views/contracting_menu_items.xml',
 
         'views/project_task_views.xml',
