@@ -33,5 +33,12 @@
             <field name="implied_ids" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
         </record>
 
+
+        <!-- Group CEO -->
+        <record id="group_hr_ceo" model="res.groups">
+            <field name="name">CEO</field>
+            <field name="category_id" ref="base.module_category_human_resources"/>
+        </record>
+
     </data>
 </odoo>

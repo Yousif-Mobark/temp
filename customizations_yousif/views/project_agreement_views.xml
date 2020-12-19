@@ -7,18 +7,47 @@
             <field name="inherit_id" ref="project_agreement.view_project_agreement_form"/>
             <field name="arch" type="xml">
 
+                <xpath expr="//header" position="replace">
+                    <header>
+                        <button name="action_start_studying" string="Start Studying" states="draft"
+                                type="object" class="oe_highlight"/>
+                        <button name="action_send_for_approval" string="Send For Approval" states="pq"
+                                type="object" class="oe_highlight"/>
+                        <button name="action_approve"   string="Approve" states="waiting_approve" type="object" class="oe_highlight"/>
+                        <button name="action_assigned"   string="Assigned" states="approved" type="object" class="oe_highlight"/>
+                        <button name="action_reject"  string="Reject" type="object" class="oe_highlight"/>
+                        <button name="action_cancel"  string="Close" type="object"  class="oe_highlight" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,pq,waiting_approve,approved,aq,closed,refuse" />
+                    </header>
+                </xpath>
+
+                <xpath expr="//field[@name='project_agreement_planned_line_ids']/tree/field[@name='required_quantity']"
+                       position="after">
+                    <field name="expected_end_date"/>
+                    <field name="pm_revenue"/>
+                </xpath>
+
+                <xpath expr="//field[@name='project_agreement_planned_line_ids']/tree/field[@name='state']"
+                       position="after">
+                    <field name="pre_sales_engineer"/>
+                </xpath>
+
                 <xpath expr="//field[@name='project_manager']" position="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
+
                 <xpath expr="//field[@name='customer_id']" position="attributes">
                     <attribute name="readonly">1</attribute>
                 </xpath>
+
                 <xpath expr="//field[@name='name']" position="attributes">
                     <attribute name="readonly">1</attribute>
                 </xpath>
+
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="project_type" invisible="1"/>
                 </xpath>
+
                 <xpath expr="//page[@name='agreement_planned']" position="attributes">
                     <attribute name="string">Main Contracting Items</attribute>
                     <attribute name="attrs">
@@ -37,6 +66,7 @@
                                 <field name="product_id"/>
                                 <field name="product_uom"/>
                                 <field name="required_quantity" sum="required_quantity"/>
+                                <field name="expected_delivery_date"/>
                                 <field name="delivered_quantity"
                                        attrs="{'invisible':[('state','not in',['implementing','closed'])]}"
                                        sum="delivered_quantity"/>
@@ -48,11 +78,28 @@
                                 <field name="revenue_amount" sum="revenue_amount"/>
                                 <field name="parent_id" invisible="True"/>
                                 <field name="state"/>
+                                <field name="pre_sales_engineer"/>
                             </tree>
                         </field>
                     </page>
+                    <page string="Financial Info"
+                          name="financial_info">
+                        <group col="6">
+                            <group>
+                                <h6>Main Contracting Items Planned Cost &amp; Revenue</h6>
+                                <field name="agreement_cost"/>
+                            </group>
+                            <group>
+                                <h6>Raw Material Planned Cost &amp; Revenue</h6>
+                                <field name="agreement_revenue"/>
+                            </group>
+                            <group>
+                                <h6>Total Planned Cost &amp; Revenue</h6>
+                                <field name="vat_amount"/>
+                            </group>
+                        </group>
+                    </page>
                 </xpath>
-
             </field>
         </record>
     </data>

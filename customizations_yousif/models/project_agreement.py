@@ -12,9 +12,9 @@ class ProjectAgreement(models.Model):
         return self.env['ir.sequence'].next_by_code('project.agreement.code.sequence') or ''
 
     state = fields.Selection([('draft', 'Draft'), ('pq', 'PQ'),
-                              ('waiting_approve', 'Wating Approve'), ('approved', 'Approved'),
-                              ('budget_generating', 'Budget generating'),
-                              ('implementing', 'Implementing'), ('refuse', 'Refused'), ('closed', 'Closed')],
+                              ('waiting_approve', 'Waiting Approval'), ('approved', 'Approved'),
+                              ('aq', 'AQ'),
+                              ('refuse', 'Rejected'), ('closed', 'Canceled')],
                              default='draft', track_visibility='onchange')
 
     analytic_id = fields.Many2one('account.analytic', "Analytic Account")
@@ -23,6 +23,55 @@ class ProjectAgreement(models.Model):
                        required=1)
     name = fields.Char('Project', required=True, states={'approved': [('readonly', True)]})
     project_raw_material_line_ids = fields.One2many('project.agreement.raw.material.line', 'agreement_id')
+
+    def action_start_studying(self):
+        self.state = 'pq'
+        self.env['project.project'].create({'name': self.name})
+        domain = [("groups_id", "=", self.env.ref("customizations_yousif.group_pre_sales_engineer").id)]
+        pre_sales_engineers = self.env['res.users'].search(domain)
+        users_to_notify = pre_sales_engineers
+        users_to_notify += self.project_manager
+
+        self.env['mail.message'].create({'message_type': "notification",
+                                         "subtype": self.env.ref("mail.mt_comment").id,
+                                         'body': "Study Has Started",
+                                         'subject': "Project Study",
+                                         'needaction_partner_ids': [(4, user.partner_id.id) for user in users_to_notify],
+                                         'model': self._name,
+                                         'res_id': self.id,
+                                         })
+
+    def action_send_for_approval(self):
+        self.state = 'waiting_approve'
+
+    def action_approve(self):
+        self.state = 'approved'
+
+    def action_reject(self):
+        self.state = 'refuse'
+
+    def action_cancel(self):
+        self.state = 'closed'
+
+    def action_assigned(self):
+        self.state = 'aq'
+        pre_sales_engineers = self.env['res.users'].search(
+            [("groups_id", "=", self.env.ref("customizations_yousif.group_pre_sales_engineer").id)])
+        ceos = self.env['res.users'].search(
+            [("groups_id", "=", self.env.ref("customizations_yousif.group_hr_ceo").id)])
+        users_to_notify = pre_sales_engineers
+        users_to_notify += ceos
+        users_to_notify += self.project_manager
+
+        self.env['mail.message'].create({'message_type': "notification",
+                                         "subtype": self.env.ref("mail.mt_comment").id,
+                                         'body': "Project Assigned",
+                                         'subject': "Project Assigned",
+                                         'needaction_partner_ids': [(4, user.partner_id.id) for user in
+                                                                    users_to_notify],
+                                         'model': self._name,
+                                         'res_id': self.id,
+                                         })
 
     @api.constrains('code')
     def _check_if_code_is_unique(self):
@@ -53,6 +102,7 @@ class ProjectAgreementRMLine(models.Model):
     product_id = fields.Many2one('product.product', 'Name', readonly=1, domain=_getProducts)
     required_quantity = fields.Float(string='Required Qty', )
     delivered_quantity = fields.Monetary(string='Delivered Qty')
+    expected_delivery_date = fields.Date("Expected Delivery Date")
     residual_quantity = fields.Monetary(compute='_compute_residual_quantity', string='Residual Qty')
     product_uom = fields.Many2one('product.uom', 'Unit of Measure', required=1, related='product_id.uom_id')
     price_unit = fields.Monetary('Unit Price', digits=dp.get_precision('Price'))
@@ -83,6 +133,8 @@ class ProjectAgreementRMLine(models.Model):
     purchase_ok = fields.Boolean('Can be Purchased', default=True)
     stock_ok = fields.Boolean('Can Stored')
     set_to_child = fields.Boolean()
+    pre_sales_engineer = fields.Many2one('res.users', "Pre-Sales Engineer",
+                                         domain=lambda self: [("groups_id", "=", self.env.ref("customizations_yousif.group_pre_sales_engineer").id)])
 
     cost = fields.Float(compute="_sum_lines_total", string="Lines Total Cost")
 
@@ -147,3 +199,13 @@ class ProjectAgreementRMLine(models.Model):
             line.update({
                 'revenue_amount': (line.revenue / 100) * line.total
             })
+
+
+class ProjectAgreementLine(models.Model):
+    _inherit = 'project.agreement.planned'
+
+    expected_end_date = fields.Date("Expected End Date")
+    pm_revenue = fields.Float("PM Revenue")
+    pre_sales_engineer = fields.Many2one("res.users", "Pres-Sales Engineer", domain=lambda self: [("groups_id", "=",
+                                                                                                   self.env.ref(
+                                                                                                       "customizations_yousif.group_pre_sales_engineer").id)])
