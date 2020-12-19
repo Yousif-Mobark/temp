@@ -6,9 +6,82 @@
             <field name="model">project.project</field>
             <field name="inherit_id" ref="project.edit_project"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='user_id']" position="after">
-                    <field name="project_type"/>
-                    <field name="project_code"/>
+                <xpath expr="//field[@name='name']/../.." position="after">
+                    <group string="specials">
+                        <group >
+                            <field name="project_type"/>
+                            <field name="project_code"/>
+                            <field name="project_warehouse"/>
+                            <field name="start_date"/>
+                            <field name="end_date" />
+                        </group>
+                        <group>
+                            <field name="project_cost_account"/>
+                            <field name="company_operation_account"/>
+                            <field name="purchase_engineer"/>
+                            <field name="agreement_id" />
+                            <field name="raw_task"/>
+                        </group>
+                    </group>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Main items">
+                        <field name="agreement_type" invisible="1"/>
+                        <field name="main_items" mode="tree" context="{'default_agreement_type':agreement_type,'default_state' :'draft'}">
+                            <tree>
+                                <field name="code"/>
+                                <field name="name"/>
+                                <field name="product_uom"/>
+                                <field name="required_quantity" sum="required_quantity"/>
+                                <field name="delivered_quantity" attrs="{'invisible':[('state','not in',['implementing','closed'])]}" sum="delivered_quantity"/>
+                                <field name="residual_quantity" attrs="{'invisible':[('state','not in',['implementing','closed'])]}" sum="residual_quantity"/>
+                                <field name="total" sum="total"/>
+                                <field name="revenue" sum="revenue"/>
+                                <field name="revenue_amount" sum="revenue_amount"/>
+                                <field name="parent_id" invisible="True"/>
+                                <field name="state" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Raw Material Lines"
+                          attrs="{'invisible': [('project_type', 'not in', ('supply', 'supply_installation'))]}"
+                          name="raw_material_lines">
+                        <field name="raw_items" mode="tree">
+                            <tree>
+                                <field name="code"/>
+                                <field name="product_id"/>
+                                <field name="product_uom"/>
+                                <field name="required_quantity" sum="required_quantity"/>
+                                <field name="delivered_quantity"
+                                       attrs="{'invisible':[('state','not in',['implementing','closed'])]}"
+                                       sum="delivered_quantity"/>
+                                <field name="residual_quantity"
+                                       attrs="{'invisible':[('state','not in',['implementing','closed'])]}"
+                                       sum="residual_quantity"/>
+                                <field name="total" sum="total"/>
+                                <field name="revenue" sum="revenue"/>
+                                <field name="revenue_amount" sum="revenue_amount"/>
+                                <field name="parent_id" invisible="True"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Team hierarchy">
+                        <field name="team_lines" mod="tree" >
+                            <tree editable="bottom">
+                                <field name="title" required="True"/>
+                                <field name="count" required="True"/>
+                                <field name="in_main" />
+                                <field name="cost"  required="True" />
+                                <field name="total_hour" required="True"/>
+                                <field name="total_cost" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Profile Data">
+
+                    </page>
                 </xpath>
             </field>
         </record>
