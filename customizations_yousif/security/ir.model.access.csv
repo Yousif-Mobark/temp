@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_agreement_manager_ap,project.agreement.raw.material.line.access,model_project_agreement_raw_material_line,,1,1,1,1
+access_assigned_doc_int,assigned.doc.int.access,model_assigned_doc_int,,1,1,1,1
+access_assigned_line,assigned.line.access,model_assigned_line,,1,1,1,1
+access_assigned_doc_sub,assigned.sub.int.access,model_assigned_doc_sub,,1,1,1,1

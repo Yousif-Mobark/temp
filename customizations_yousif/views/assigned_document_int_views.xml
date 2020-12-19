@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Internal Assigned Document Action -->
+        <record id="action_internal_assigned_document" model="ir.actions.act_window">
+            <field name="name">Internal Assigned Document</field>
+            <field name="res_model">assigned.doc.sub</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create an internal assigned document
+                </p>
+            </field>
+        </record>
+
+        <!-- Internal Assigned Document Form View -->
+        <record id="internal_assigned_document_view_form" model="ir.ui.view">
+            <field name="name">assigned.doc.int.view.form</field>
+            <field name="model">assigned.doc.int</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="company_operation_costing_account_id"/>
+                            <field name="assigned_date"/>
+                            <field name="creator_id"/>
+                            <field name="task_id"/>
+                            <field name="project_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Assigned Lines" name="assigned_lines">
+                                <field name="assigned_line_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Internal Assigned Document Tree View -->
+        <record id="internal_assigned_document_view_tree" model="ir.ui.view">
+            <field name="name">assigned.doc.int.view.tree</field>
+            <field name="model">assigned.doc.int</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="project_id"/>
+                     <field name="task_id"/>
+                    <field name="assigned_date"/>
+                    <field name="creator_id"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

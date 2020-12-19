@@ -21,11 +21,17 @@
         <!-- Subcontracting Menus -->
         <menuitem id="contracting_menu_subcontracting" name="Subcontracting" parent="contracting_menu_main"/>
 
+        <menuitem id="contracting_menu_sub_assigned_doc" action="action_subcontractor_assigned_document"
+                  name="Subcontractor Assigned Documents" sequence="1" parent="contracting_menu_subcontracting"/>
+
+         <menuitem id="contracting_menu_int_assigned_doc" action="action_internal_assigned_document"
+                  name="Internal Assigned Documents" sequence="2" parent="contracting_menu_subcontracting"/>
+
         <menuitem id="contracting_menu_sub_spb" action="action_invoice_tree_spb"
-                  name="Subcontracting Progress Bills" sequence="1" parent="contracting_menu_subcontracting"/>
+                  name="Subcontracting Progress Bills" sequence="3" parent="contracting_menu_subcontracting"/>
 
         <menuitem id="contracting_menu_sub_ipb" action="action_invoice_tree_ipb"
-                  name="Internal Progress Bills" sequence="2" parent="contracting_menu_subcontracting"/>
+                  name="Internal Progress Bills" sequence="4" parent="contracting_menu_subcontracting"/>
 
 
         <!-- Master Data Menus -->
