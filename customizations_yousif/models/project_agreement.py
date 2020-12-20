@@ -26,7 +26,8 @@ class ProjectAgreement(models.Model):
 
     def action_start_studying(self):
         self.state = 'pq'
-        self.env['project.project'].create({'name': self.name})
+        res = self.env['project.project'].create({'name': self.name})
+        self.project_id = res.id
         domain = [("groups_id", "=", self.env.ref("customizations_yousif.group_pre_sales_engineer").id)]
         pre_sales_engineers = self.env['res.users'].search(domain)
         users_to_notify = pre_sales_engineers
@@ -206,6 +207,7 @@ class ProjectAgreementLine(models.Model):
 
     expected_end_date = fields.Date("Expected End Date")
     pm_revenue = fields.Float("PM Revenue")
+    task_id = fields.Many2one("project.task")
     pre_sales_engineer = fields.Many2one("res.users", "Pres-Sales Engineer", domain=lambda self: [("groups_id", "=",
                                                                                                    self.env.ref(
                                                                                                        "customizations_yousif.group_pre_sales_engineer").id)])
