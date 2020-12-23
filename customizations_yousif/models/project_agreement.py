@@ -17,7 +17,7 @@ class ProjectAgreement(models.Model):
                               ('refuse', 'Rejected'), ('closed', 'Canceled')],
                              default='draft', track_visibility='onchange')
 
-    analytic_id = fields.Many2one('account.analytic', "Analytic Account")
+    analytic_id = fields.Many2one('account.analytic.account',related="project_id.analytic_account_id", string="Analytic Account")
     code = fields.Char('Code', states={'approved': [('readonly', True)]},
                        default=_get_default_code,
                        required=1)
@@ -27,6 +27,7 @@ class ProjectAgreement(models.Model):
     def action_start_studying(self):
         self.state = 'pq'
         res = self.env['project.project'].create({'name': self.name})
+        res.analytic_account_id.name = self.code
         self.project_id = res.id
         domain = [("groups_id", "=", self.env.ref("customizations_yousif.group_pre_sales_engineer").id)]
         pre_sales_engineers = self.env['res.users'].search(domain)

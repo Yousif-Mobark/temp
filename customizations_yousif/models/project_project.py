@@ -90,8 +90,12 @@ class projectTeam(models.Model):
     in_main = fields.Boolean("In main items?")
     cost = fields.Float("cost per hour")
     total_hour = fields.Float()
-    total_cost = fields.Float()
+    total_cost = fields.Float(compute="get_total",stored=True)
 
+    @api.depends("cost","total_hour")
+    @api.one
+    def get_total(self):
+        self.total_cost = self.total_hour*self.cost
 
 class mainitemline(models.Model):
     _inherit = "project.agreement.planned"
@@ -126,9 +130,10 @@ class workingItemLine(models.Model):
     uom_id = fields.Many2one("product.uom")
     planned_unit_cost = fields.Float()
     planned_quantity = fields.Float()
-    line_planned_cost = fields.Float(compute="compute_plane_cost")
+    line_planned_cost = fields.Float(compute="compute_plan_cost",stored=True )
 
     @api.one
+    @api.depends("planned_unit_cost","planned_quantity")
     def compute_plan_cost(self):
         self.line_planned_cost = self.planned_quantity * self.planned_unit_cost
 

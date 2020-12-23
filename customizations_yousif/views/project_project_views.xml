@@ -26,7 +26,7 @@
                 </xpath>
 
                 <xpath expr="//notebook" position="inside">
-                    <page string="Main items">
+                    <page string="Main items" attrs="{'invisible': [('project_type', '=', 'supply')]}">
                         <field name="agreement_type" invisible="1"/>
                         <field name="main_items" mode="tree" context="{'default_agreement_type':agreement_type,'default_state' :'draft'}">
                             <tree>

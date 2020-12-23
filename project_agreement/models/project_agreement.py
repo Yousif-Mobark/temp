@@ -23,7 +23,7 @@ class projectAgreement(models.Model):
                               ('implementing','Implementing'),('refuse','Refused'), ('closed','Closed')] , default='draft', track_visibility='onchange')
     agreement_type = fields.Selection([('civil','Civil') , ('emergency' , 'Emergency'),('construction','Construction')] , default='civil' ,required=True)
     budget_id = fields.Many2one('crossovered.budget' ,'Budget' ,readonly=True )
-    project_agreement_planned_line_ids = fields.One2many('project.agreement.planned','agreement_id',domain=[('parent_id','=',False)])
+    project_agreement_planned_line_ids = fields.Many2many('project.agreement.planned',domain=[('parent_id','=',False)])
 
     all_project_agreement_planned_line_ids = fields.One2many('project.agreement.planned', 'agreement_id')
     agreement_cost = fields.Monetary(compute='_compute_cost_revenue', string='Planned Cost', store=True)
