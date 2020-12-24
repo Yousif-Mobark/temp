@@ -29,7 +29,7 @@ class ProjectAgreement(models.Model):
         res = self.env['project.project'].create({'name': self.name})
         res.analytic_account_id.name = self.code
         self.project_id = res.id
-        domain = [("groups_id", "=", self.env.ref("customizations_yousif.group_pre_sales_engineer").id)]
+        domain = [("groups_id", "=", self.env.ref("emar_operation_custom.group_pre_sales_engineer").id)]
         pre_sales_engineers = self.env['res.users'].search(domain)
         users_to_notify = pre_sales_engineers
         users_to_notify += self.project_manager
@@ -58,9 +58,9 @@ class ProjectAgreement(models.Model):
     def action_assigned(self):
         self.state = 'aq'
         pre_sales_engineers = self.env['res.users'].search(
-            [("groups_id", "=", self.env.ref("customizations_yousif.group_pre_sales_engineer").id)])
+            [("groups_id", "=", self.env.ref("emar_operation_custom.group_pre_sales_engineer").id)])
         ceos = self.env['res.users'].search(
-            [("groups_id", "=", self.env.ref("customizations_yousif.group_hr_ceo").id)])
+            [("groups_id", "=", self.env.ref("emar_operation_custom.group_hr_ceo").id)])
         users_to_notify = pre_sales_engineers
         users_to_notify += ceos
         users_to_notify += self.project_manager
@@ -136,7 +136,7 @@ class ProjectAgreementRMLine(models.Model):
     stock_ok = fields.Boolean('Can Stored')
     set_to_child = fields.Boolean()
     pre_sales_engineer = fields.Many2one('res.users', "Pre-Sales Engineer",
-                                         domain=lambda self: [("groups_id", "=", self.env.ref("customizations_yousif.group_pre_sales_engineer").id)])
+                                         domain=lambda self: [("groups_id", "=", self.env.ref("emar_operation_custom.group_pre_sales_engineer").id)])
 
     cost = fields.Float(compute="_sum_lines_total", string="Lines Total Cost")
 
@@ -211,4 +211,4 @@ class ProjectAgreementLine(models.Model):
     task_id = fields.Many2one("project.task")
     pre_sales_engineer = fields.Many2one("res.users", "Pres-Sales Engineer", domain=lambda self: [("groups_id", "=",
                                                                                                    self.env.ref(
-                                                                                                       "customizations_yousif.group_pre_sales_engineer").id)])
+                                                                                                       "emar_operation_custom.group_pre_sales_engineer").id)])
