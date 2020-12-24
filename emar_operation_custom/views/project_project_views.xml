@@ -80,7 +80,10 @@
                         </field>
                     </page>
                     <page string="Profile Data">
-
+                        <group>
+                            <field name="project_profile" filename="project_profile_filename" placeholder="Choose a file..."/>
+                            <field name="project_profile_filename" invisible="1"/>
+                        </group>
                     </page>
                 </xpath>
 

@@ -23,8 +23,8 @@ class ProjectProject(models.Model):
     agreement_id = fields.Many2one("project.agreement")
     agreement_type = fields.Selection(related="agreement_id.agreement_type")
     #  Adding project profile data will be explained later
-
-    #
+    project_profile = fields.Binary("Project Profile", attachment=True)
+    project_profile_filename = fields.Char()
     team_lines = fields.One2many("project.team.member", "project")
     raw_task = fields.Many2one("project.task", "Task of raw material")
 

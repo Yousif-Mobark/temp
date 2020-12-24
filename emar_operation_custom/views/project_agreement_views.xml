@@ -13,11 +13,14 @@
                                 type="object" class="oe_highlight"/>
                         <button name="action_send_for_approval" string="Send For Approval" states="pq"
                                 type="object" class="oe_highlight"/>
-                        <button name="action_approve"   string="Approve" states="waiting_approve" type="object" class="oe_highlight"/>
-                        <button name="action_assigned"   string="Assigned" states="approved" type="object" class="oe_highlight"/>
-                        <button name="action_reject"  string="Reject" type="object" class="oe_highlight"/>
-                        <button name="action_cancel"  string="Close" type="object"  class="oe_highlight" />
-                        <field name="state" widget="statusbar" statusbar_visible="draft,pq,waiting_approve,approved,aq,closed,refuse" />
+                        <button name="action_approve" string="Approve" states="waiting_approve" type="object"
+                                class="oe_highlight"/>
+                        <button name="action_assigned" string="Assigned" states="approved" type="object"
+                                class="oe_highlight"/>
+                        <button name="action_reject" string="Reject" type="object" class="oe_highlight"/>
+                        <button name="action_cancel" string="Close" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,pq,waiting_approve,approved,aq,closed,refuse"/>
                     </header>
                 </xpath>
 
@@ -88,15 +91,23 @@
                         <group col="6">
                             <group>
                                 <h6>Main Contracting Items Planned Cost &amp; Revenue</h6>
-                                <field name="agreement_cost"/>
+                                <field name="agreement_cost" string="Planned Cost"/>
+                                <field name="pm_added_revenue"/>
+                                <field name="agreement_revenue" string="Account Manager Revenue"/>
+                                <field name="total_untaxed" class="oe_subtotal_footer_separator"/>
                             </group>
                             <group>
                                 <h6>Raw Material Planned Cost &amp; Revenue</h6>
-                                <field name="agreement_revenue"/>
+                                <field name="rm_agreement_revenue"/>
+                                <field name="rm_agreement_cost"/>
+                                <field name="rm_total_untaxed" class="oe_subtotal_footer_separator"/>
                             </group>
                             <group>
                                 <h6>Total Planned Cost &amp; Revenue</h6>
-                                <field name="vat_amount"/>
+                                <field name="total_financial_offer_untaxed"/>
+                                <field name="total_tax"/>
+                                <field name="rm_vat_amount"/>
+                                <field name="project_grand_total_offer" class="oe_subtotal_footer_separator"/>
                             </group>
                         </group>
                     </page>

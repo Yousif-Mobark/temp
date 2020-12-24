@@ -16,13 +16,75 @@ class ProjectAgreement(models.Model):
                               ('aq', 'AQ'),
                               ('refuse', 'Rejected'), ('closed', 'Canceled')],
                              default='draft', track_visibility='onchange')
-
-    analytic_id = fields.Many2one('account.analytic.account',related="project_id.analytic_account_id", string="Analytic Account")
+    rm_agreement_cost = fields.Monetary(compute='_compute_cost_revenue', default=0,
+                                        string='Planned Cost', store=True)
+    rm_agreement_revenue = fields.Monetary(compute='_compute_cost_revenue', string='Planned Revenue', default=0,
+                                           store=True)
+    pm_added_revenue = fields.Monetary(compute='_compute_cost_revenue', string='PM Added Revenue', store=True,
+                                       default=0)
+    rm_vat_amount = fields.Monetary(string='VAT', default=0,
+                                    store=False, compute="_compute_rm_vat")
+    rm_total_after_vat = fields.Monetary(compute='_compute_rm_vat', string='Total after VAT', default=0,
+                                         store=True)
+    analytic_id = fields.Many2one('account.analytic.account',
+                                  related="project_id.analytic_account_id", string="Analytic Account")
     code = fields.Char('Code', states={'approved': [('readonly', True)]},
                        default=_get_default_code,
                        required=1)
     name = fields.Char('Project', required=True, states={'approved': [('readonly', True)]})
+    total_untaxed = fields.Monetary("Total", compute="_compute_total_untaxed")
+    rm_total_untaxed = fields.Monetary("Total", compute="_compute_total_untaxed")
+    total_financial_offer_untaxed = fields.Monetary("Total Financial Offer without Tax", compute="_compute_t_o_w_t")
+    total_tax = fields.Monetary("Tax", compute="_compute_total_taxes")
+    project_grand_total_offer = fields.Monetary("Total", compute="_compute_grand_total_offer")
     project_raw_material_line_ids = fields.One2many('project.agreement.raw.material.line', 'agreement_id')
+
+    def _compute_total_untaxed(self):
+        for rec in self:
+            rec.total_untaxed = rec.pm_added_revenue + rec.agreement_cost + rec.agreement_revenue
+            rec.rm_total_untaxed = rec.rm_agreement_cost + rec.rm_agreement_revenue
+
+    def _compute_grand_total_offer(self):
+        for rec in self:
+            rec.project_grand_total_offer = rec.total_financial_offer_untaxed + rec.total_tax
+
+    def _compute_t_o_w_t(self):
+        for rec in self:
+            rec.total_financial_offer_untaxed = rec.total_untaxed + rec.rm_total_untaxed
+
+    def _compute_total_taxes(self):
+        for rec in self:
+            rec.total_tax = rec.vat_amount + rec.rm_vat_amount
+
+    def _compute_cost_revenue(self):
+        for rec in self:
+            rec.agreement_cost = sum(rec.project_agreement_planned_line_ids.mapped('total'))
+            rec.agreement_revenue = sum(rec.project_agreement_planned_line_ids.mapped('revenue_amount'))
+            rec.rm_agreement_cost = sum(rec.project_raw_material_line_ids.mapped('total'))
+            rec.rm_agreement_revenue = sum(rec.project_raw_material_line_ids.mapped('revenue_amount'))
+            rec.pm_added_revenue = sum(rec.project_agreement_planned_line_ids.mapped('pm_revenue'))
+
+    @api.depends('vat_percentage', 'rm_agreement_revenue', 'rm_agreement_cost')
+    def _compute_rm_vat(self):
+        print("##############################################")
+        for rec in self:
+            print("***********************************************************************************8")
+            if rec.rm_agreement_revenue and rec.rm_agreement_cost:
+                rm_amount = rec.rm_agreement_cost + rec.rm_agreement_revenue
+                rm_vat = rm_amount * (rec.vat_percentage/100)
+                rec.update({'rm_vat_amount': rm_vat, 'rm_total_after_vat': rm_amount + rm_vat})
+            else:
+                rec.update({'rm_vat_amount': 0, 'rm_total_after_vat': 0})
+
+    @api.depends('vat_percentage', 'agreement_revenue', 'agreement_cost', 'pm_added_revenue')
+    def _compute_vat(self):
+        for rec in self:
+            if rec.agreement_cost and rec.agreement_revenue:
+                amount = rec.agreement_cost + rec.agreement_revenue + rec.pm_added_revenue
+                vat = amount * (rec.vat_percentage/100)
+                rec.update({'vat_amount': vat, 'total_after_vat': amount + vat})
+            else:
+                rec.update({'vat_amount': 0, 'total_after_vat': 0})
 
     def action_start_studying(self):
         self.state = 'pq'
@@ -42,6 +104,16 @@ class ProjectAgreement(models.Model):
                                          'model': self._name,
                                          'res_id': self.id,
                                          })
+
+    @api.depends('vat_percentage', 'agreement_revenue', 'agreement_cost')
+    def _compute_vat(self):
+        for rec in self:
+            if rec.agreement_cost and rec.agreement_revenue:
+                amount = rec.agreement_cost + rec.agreement_revenue
+                vat = amount * (rec.vat_percentage/100)
+                rec.update({'vat_amount': vat, 'total_after_vat': amount + vat})
+            else:
+                rec.update({'vat_amount': 0, 'total_after_vat': 0})
 
     def action_send_for_approval(self):
         self.state = 'waiting_approve'
