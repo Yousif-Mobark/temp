@@ -106,7 +106,6 @@
                                 <h6>Total Planned Cost &amp; Revenue</h6>
                                 <field name="total_financial_offer_untaxed"/>
                                 <field name="total_tax"/>
-                                <field name="rm_vat_amount"/>
                                 <field name="project_grand_total_offer" class="oe_subtotal_footer_separator"/>
                             </group>
                         </group>
