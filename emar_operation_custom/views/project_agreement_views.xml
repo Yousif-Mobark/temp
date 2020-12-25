@@ -26,6 +26,7 @@
 
                 <xpath expr="//field[@name='project_agreement_planned_line_ids']/tree/field[@name='required_quantity']"
                        position="after">
+                    <field name="price_unit"/>
                     <field name="expected_end_date"/>
                     <field name="pm_revenue"/>
                 </xpath>
@@ -35,6 +36,9 @@
                     <field name="pre_sales_engineer"/>
                 </xpath>
 
+                <xpath expr="//field[@name='project_agreement_planned_line_ids']/tree" position="attributes">
+                         <attribute name="editable">bottom</attribute>
+                </xpath>
                 <xpath expr="//field[@name='project_manager']" position="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
@@ -64,8 +68,8 @@
                           attrs="{'invisible': [('project_type', 'not in', ('supply', 'supply_installation'))]}"
                           name="raw_material_lines">
                         <field name="project_raw_material_line_ids" mode="tree"
-                               context="{'default_state':state,'default_agreement_type':agreement_type}">
-                            <tree>
+                               context="{'default_agreement_type':agreement_type}">
+                            <tree editable="bottom">
                                 <field name="code"/>
                                 <field name="product_id"/>
                                 <field name="product_uom"/>

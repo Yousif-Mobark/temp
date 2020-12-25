@@ -168,12 +168,12 @@ class ProjectAgreementRMLine(models.Model):
 
     @api.model
     def _getProducts(self):
-        return [('categ_id.category_type', '=', 'raw_material')]
+        return [('product_subtype', '=', 'raw_material')]
 
     code = fields.Char('Code')
     agreement_id = fields.Many2one('project.agreement', 'Agreement')
     project_id = fields.Many2one('project.project', related='agreement_id.project_id', store=True)
-    product_id = fields.Many2one('product.product', 'Name', readonly=1, domain=_getProducts)
+    product_id = fields.Many2one('product.product', 'Raw material', readonly=0, domain=_getProducts)
     required_quantity = fields.Float(string='Required Qty', )
     delivered_quantity = fields.Monetary(string='Delivered Qty')
     expected_delivery_date = fields.Date("Expected Delivery Date")
@@ -196,7 +196,7 @@ class ProjectAgreementRMLine(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('wating_approve', 'Wating Approve'), ('approved', 'Approved'),
                               ('budget_generating', 'Budget generating'),
                               ('implementing', 'Implementing'), ('refuse', 'Refused'), ('closed', 'Closed')],
-                             related="agreement_id.state")
+                             default='draft')
     child_ids = fields.One2many('project.agreement.planned', inverse_name="parent_id", string="Child Items")
     agreement_type = fields.Selection(
         [('civil', 'Civil'), ('emergency', 'Emergency'), ('construction', 'Construction')],

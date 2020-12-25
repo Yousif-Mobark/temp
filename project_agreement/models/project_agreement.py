@@ -23,7 +23,7 @@ class projectAgreement(models.Model):
                               ('implementing','Implementing'),('refuse','Refused'), ('closed','Closed')] , default='draft', track_visibility='onchange')
     agreement_type = fields.Selection([('civil','Civil') , ('emergency' , 'Emergency'),('construction','Construction')] , default='civil' ,required=True)
     budget_id = fields.Many2one('crossovered.budget' ,'Budget' ,readonly=True )
-    project_agreement_planned_line_ids = fields.Many2many('project.agreement.planned',domain=[('parent_id','=',False)])
+    project_agreement_planned_line_ids = fields.One2many('project.agreement.planned','agreement_id',domain=[('parent_id','=',False)])
 
     all_project_agreement_planned_line_ids = fields.One2many('project.agreement.planned', 'agreement_id')
     agreement_cost = fields.Monetary(compute='_compute_cost_revenue', string='Planned Cost', store=True)
@@ -257,12 +257,12 @@ class projectAgreementLine(models.Model):
     analytic_account_id = fields.Many2one('account.analytic.account' , 'Cost Center', readonly=True)
     account_id = fields.Many2one('account.account', string='Account' ,domain=_getAccounts)
     is_cost_center = fields.Boolean('Is Cost Center')
-    type = fields.Selection([('view' , 'View') , ('material' , 'Material') , ('internal','Internal Workers') , ('other' , 'Other')] ,required=True)
+    type = fields.Selection([('view' , 'View') , ('material' , 'Material') , ('internal','Internal Workers') , ('other' , 'Other')] ,required=False)
     progress = fields.Float('Progress %')
     responsible_id = fields.Many2one('res.partner', string='Responsible')
     parent_id = fields.Many2one('project.agreement.planned', string='Parent' ,  ondelete='cascade',)
     state = fields.Selection([('draft','Draft'),('wating_approve','Wating Approve'),('approved','Approved'),('budget_generating','Budget generating'),
-                              ('implementing','Implementing'),('refuse','Refused'), ('closed','Closed')] ,related="agreement_id.state")
+                              ('implementing','Implementing'),('refuse','Refused'), ('closed','Closed')] ,default='draft')
     child_ids = fields.One2many('project.agreement.planned',inverse_name="parent_id",string="Child Items")
     agreement_type = fields.Selection([('civil','Civil'),('emergency','Emergency'),('construction','Construction')] ,related="agreement_id.agreement_type",store=True)
     sale_ok = fields.Boolean(
