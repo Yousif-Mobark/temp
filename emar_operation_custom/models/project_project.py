@@ -104,7 +104,7 @@ class mainitemline(models.Model):
 class rawMaterialLine(models.Model):
     _inherit = "project.agreement.raw.material.line"
 
-    main_working_item_id = fields.Many2one("project.agreement.planned")
+    main_working_item_id = fields.Many2one("project.agreement.planned") #not nessery field already used parent_id
     task_id = fields.Many2one(related="parent_id.task_id")
     planned_unit_cost = fields.Float()
     remaining_quantity = fields.Float(compute="compute_remain_qty")
