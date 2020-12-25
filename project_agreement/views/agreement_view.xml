@@ -37,7 +37,7 @@
                         </group>
                         <notebook>
                             <page string="agreement Planned" name="agreement_planned">
-                                <field name="project_agreement_planned_line_ids" mode="tree" context="{'default_state':state,'default_agreement_type':agreement_type}">
+                                <field name="project_agreement_planned_line_ids" mode="tree" context="{'default_agreement_type':agreement_type}">
                                     <tree>
                                         <field name="code"/>
                                         <field name="name"/>

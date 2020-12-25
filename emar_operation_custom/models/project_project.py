@@ -67,7 +67,7 @@ class ProjectProject(models.Model):
         # - Raw Material Lines:   from raw material tab if project     type is "Both"
         # - AnalyticAccount: from project form
         for rec in self.main_items:
-            self.task_ids.create({
+            rec.task_id=self.task_ids.create({
                 'main_item_id': rec.id,
                 'project_id': self.id
 
@@ -105,7 +105,7 @@ class rawMaterialLine(models.Model):
     _inherit = "project.agreement.raw.material.line"
 
     main_working_item_id = fields.Many2one("project.agreement.planned")
-    task_id = fields.Many2one(related="main_working_item_id.task_id")
+    task_id = fields.Many2one(related="parent_id.task_id")
     planned_unit_cost = fields.Float()
     remaining_quantity = fields.Float(compute="compute_remain_qty")
     line_planned_cost = fields.Float(compute="compute_plan_cost")

@@ -90,6 +90,7 @@ class ProjectAgreement(models.Model):
         self.state = 'pq'
         res = self.env['project.project'].create({'name': self.name})
         res.analytic_account_id.name = self.code
+        res.project_code = self.code
         self.project_id = res.id
         domain = [("groups_id", "=", self.env.ref("emar_operation_custom.group_pre_sales_engineer").id)]
         pre_sales_engineers = self.env['res.users'].search(domain)
@@ -189,7 +190,7 @@ class ProjectAgreementRMLine(models.Model):
     is_cost_center = fields.Boolean('Is Cost Center')
     type = fields.Selection(
         [('view', 'View'), ('material', 'Material'), ('internal', 'Internal Workers'), ('other', 'Other')],
-        required=True)
+        required=False)
     progress = fields.Float('Progress %')
     responsible_id = fields.Many2one('res.partner', string='Responsible')
     parent_id = fields.Many2one('project.agreement.planned', string='Parent', ondelete='cascade', )
