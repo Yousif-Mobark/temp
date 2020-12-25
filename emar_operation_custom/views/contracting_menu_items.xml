@@ -37,11 +37,11 @@
         <!-- Master Data Menus -->
         <menuitem id="contracting_menu_master_data" name="Master Data" parent="contracting_menu_main"/>
 
-        <menuitem id="contracting_menu_sub_work_item" action="sub_working_items_action"
-                  name="Sub working Items" sequence="1" parent="contracting_menu_master_data"/>
+        <menuitem id="contracting_menu_sub_work_item" action="raw_materials_action"
+                  name="Raw materials" sequence="1" parent="contracting_menu_master_data"/>
 
-        <menuitem id="contracting_menu_raw_material" action="raw_materials_action"
-                  name="Raw Material" sequence="2" parent="contracting_menu_master_data"/>
+        <menuitem id="contracting_menu_raw_material" action="sub_working_items_action"
+                  name="Sub Working Items" sequence="2" parent="contracting_menu_master_data"/>
 
         <menuitem id="contracting_menu_work_item" action="emar_operation.open_view_working_items"
                   name="Working Items" sequence="3" parent="contracting_menu_master_data"/>

@@ -2,33 +2,35 @@
 <odoo>
     <data>
         <!-- Sub working items action -->
-        <record id="sub_working_items_action" model="ir.actions.act_window">
-            <field name="name">Sub Working Items</field>
+        <record id="raw_materials_action" model="ir.actions.act_window">
+            <field name="name">Raw materials</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">product.product</field>
             <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{'default_product_subtype':'raw_material'}</field>
             <field name="view_type">form</field>
             <field name="domain">[('product_subtype', '=', 'raw_material')]</field>
             <field name="view_id" eval="False"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    Click to define a new sub working item.
+                    Click to define a new raw materials.
                 </p>
             </field>
         </record>
 
         <!-- Raw materials action -->
-        <record id="raw_materials_action" model="ir.actions.act_window">
-            <field name="name">Sub Working Items</field>
+        <record id="sub_working_items_action" model="ir.actions.act_window">
+            <field name="name">Sub working items</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">product.product</field>
             <field name="view_mode">tree,form,kanban</field>
             <field name="view_type">form</field>
             <field name="domain">[('product_subtype', '=', 'working_items')]</field>
+            <field name="context">{'default_product_subtype':'working_items'}</field>
             <field name="view_id" eval="False"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    Click to define a new raw material.
+                    Click to define a new sub working items.
                 </p>
             </field>
         </record>
