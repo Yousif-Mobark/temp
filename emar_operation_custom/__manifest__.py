@@ -10,6 +10,8 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'wizards/generate_assigned_doc_inter.xml',
+        'wizards/generate_assigned_doc_sub.xml',
         'data/agreement_code_sequence.xml',
         'data/project_code_sequence.xml',
         'views/project_project_views.xml',
@@ -23,8 +25,6 @@
         'views/assigned_document_sub_views.xml',
         'views/assigned_line_views.xml',
         'views/contracting_menu_items.xml',
-
         'views/project_task_views.xml',
-
     ],
 }

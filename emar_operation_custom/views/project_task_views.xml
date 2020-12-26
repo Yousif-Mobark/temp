@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
+
+        <!-- -->
         <record id="view_project_task_form_inherit" model="ir.ui.view">
             <field name="name">project.task.form.inherit</field>
             <field name="model">project.task</field>
@@ -8,8 +10,12 @@
             <field name="arch" type="xml">
                 <xpath expr="//header" position="replace">
                    <header>
-                       <button name="generate_subcontractor_doc" string="Generate Subcontractor Assigned Doc" type="object" states="under,run"/>
-                    <button name="generate_internal_assigned_doc" string="Generate Internal Assigned Doc" type="object" states="under,run"/>
+                       <button name="%(action_subcontractor_assigned_document_wiz)d"
+                               context="{'default_task_id': active_id}"
+                               string="Generate Subcontractor Assigned Doc" type="action" states="under,run"/>
+                    <button name="%(action_internal_assigned_document_wiz)d"
+                            context="{'default_task_id': active_id}"
+                            string="Generate Internal Assigned Doc" type="action" states="under,run"/>
                     <button name="generate_custody_settlement_entry" string="Generate Custody Settlement Entry" type="object" states="under"/>
                     <field name="state" widget="statusbar"/>
                    </header>
@@ -82,9 +88,8 @@
                         </field>
                     </page>
                 </xpath>
-
-
             </field>
         </record>
+
     </data>
 </odoo>

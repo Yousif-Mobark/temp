@@ -43,6 +43,9 @@ class ProjectProject(models.Model):
         # Planning Engineer should not access planning lines in tasks
         # the editing in the lines is reflecting on agreement and project is that okay ??
         # - PM should add PM extra cost in lines to be able to take this action ???
+        self.ensure_one()
+        for task in self.task_ids:
+            task.state = 'under'
         self.state = "pend"
 
     def cancel(self):
@@ -52,8 +55,9 @@ class ProjectProject(models.Model):
         # only if account manager add assigned hard copy
         # send notification to CEO , Account Manager and Responsible Engineers in tasks
         # related tasks will convert to close
-
-        pass
+        self.ensure_one()
+        for task in self.task_ids:
+            task.state = 'close'
 
     def generate_tasks(self):
         # todo: call send notification for all users related to the tasks
@@ -77,6 +81,10 @@ class ProjectProject(models.Model):
 
     def study_finish(self):
         self.state = "wait"
+        self.ensure_one()
+        for task in self.task_ids:
+            task.state = 'wait'
+
 
     def print_financial(self):
         pass
@@ -138,7 +146,7 @@ class workingItemLine(models.Model):
         self.line_planned_cost = self.planned_quantity * self.planned_unit_cost
 
 
-class custodySettlement(models.Model):
+class CustodySettlement(models.Model):
     _name = "custody.settlement"
     task_id = fields.Many2one("project.task")
     name = fields.Char('Description')
@@ -147,12 +155,13 @@ class custodySettlement(models.Model):
     # todo : the logic will be added here later
 
 
-class projectTask(models.Model):
+class ProjectTask(models.Model):
     _inherit = "project.task"
 
     # todo : pre-sales access tasks in planing sate only "rule"
-    # - smart buttons : assign documents , progress bills , purchase orders ,receipt orders ,vendor bills , custody settlements ,jornal entries
-    # - Working item line : show only in case of project type both or instalation
+    # - smart buttons : assign documents, progress bills, purchase orders, receipt orders, vendor bills,
+    # custody settlements, journal entries
+    # - Working item line : show only in case of project type both or installation
 
     main_item_id = fields.Many2one("project.agreement.planned")
     name = fields.Char(related="main_item_id.name")
@@ -193,29 +202,6 @@ class projectTask(models.Model):
 
     def all_entries(self):
         # todo: get all
-        pass
-
-    def generate_subcontractor_doc(self):
-        # todo : initiate assign document  and link it with task [One2many]
-        """
-        This action will open wizard of new model "assigned.doc.sub" and in head :
-            - Project Code-> from related project
-            - Task -> from task
-            - Task Status -> Under Study
-            - Main Item -> from task
-            - Planned Engineer -> Creator
-            - Subcontractor -> many to one from res.partner "is subcontractor = true"
-            - Assignation Date -> creation action date
-            And in lines user will add one or more lines by multi select widget and set "assigned qty" per line then computed field "Remaining" will subtract assigned from "Planned Qty" in sub working item line
-            - Notification will be sent to "PM" of this project
-
-        :return:
-        """
-
-        pass
-
-    def generate_internal_assigned_doc(self):
-        # todo:
         pass
 
     def generate_custody_settlement_entry(self):

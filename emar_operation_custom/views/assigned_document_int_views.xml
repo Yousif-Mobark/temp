@@ -4,7 +4,7 @@
         <!-- Internal Assigned Document Action -->
         <record id="action_internal_assigned_document" model="ir.actions.act_window">
             <field name="name">Internal Assigned Document</field>
-            <field name="res_model">assigned.doc.sub</field>
+            <field name="res_model">assigned.doc.int</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">

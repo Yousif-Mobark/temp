@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
-
         <!-- Subcontractor Assigned Document Action -->
         <record id="action_subcontractor_assigned_document" model="ir.actions.act_window">
             <field name="name">Subcontractor Assigned Document</field>

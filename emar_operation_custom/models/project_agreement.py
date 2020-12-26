@@ -137,7 +137,9 @@ class ProjectAgreement(models.Model):
         users_to_notify = pre_sales_engineers
         users_to_notify += ceos
         users_to_notify += self.project_manager
-
+        self.ensure_one()
+        for task in self.project_id.task_ids:
+            task.state = 'run'
         self.env['mail.message'].create({'message_type': "notification",
                                          "subtype": self.env.ref("mail.mt_comment").id,
                                          'body': "Project Assigned",

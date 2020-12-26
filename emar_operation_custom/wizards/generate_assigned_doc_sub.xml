@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Subcontractor Assigned Document Wizard Action -->
+        <record id="action_subcontractor_assigned_document_wiz" model="ir.actions.act_window">
+            <field name="name">Generate Subcontractor Assigned Document</field>
+            <field name="res_model">generate.assigned.doc.sub.wiz</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Subcontractor Assigned Document Wizard Form View -->
+        <record id="subcontractor_assigned_document_wiz_view_form" model="ir.ui.view">
+            <field name="name">assigned.doc.sub.view.form</field>
+            <field name="model">generate.assigned.doc.sub.wiz</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="subcontractor_id" required="1"/>
+                            <field name="engineer_type" required="1"/>
+                            <field name="responsible_engineer"
+                                   attrs="{'invisible':[('engineer_type','!=','responsible')],
+                                   'required': [('engineer_type', '=', 'responsible')]}"/>
+                            <field name="planned_engineer"
+                                   attrs="{'invisible':[('engineer_type','!=','planned')],
+                                    'required': [('engineer_type', '=', 'planned')]}"/>
+                            <field name="task_id" readonly="1"/>
+                            <field name="project_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Assigned Lines" name="assigned_lines">
+                                <field name="assigned_line_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        <button name="do_action" string="Submit" type="object" class="oe_highlight"/>
+                        OR
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

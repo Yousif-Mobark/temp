@@ -5,7 +5,7 @@ from odoo import models, fields, api, _
 class AssignedDocumentSubcontractor(models.Model):
     _name = "assigned.doc.sub"
 
-    serial = fields.Char()
+    serial = fields.Char("Serial", readonly=1)
     subcontractor_id = fields.Many2one("res.partner", "Subcontractor", domain=[('is_subcontractor', '=', True)])
     assigned_date = fields.Date()
     creator_id = fields.Many2one("res.users")
