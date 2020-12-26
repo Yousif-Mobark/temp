@@ -27,14 +27,19 @@ class GenerateAssignedDocSub(models.TransientModel):
                                          'model': self._name,
                                          'res_id': self.id,
                                          })
+
+        serial = str(self.task_id.project_id.project_code or '') +\
+                 "/" + self.task_id.main_item_id.name + "/" + self.subcontractor_id.name
+        print("###################################################")
+        print(serial)
+        print("###################################################")
         self.env['assigned.doc.sub'].create({
             'assigned_date': fields.Date.today(),
             'task_id': self.task_id.id,
             'assigned_line_ids': [(4, al.id) for al in self.assigned_line_ids],
             'creator_id': self._compute_creator_id(),
             'subcontractor_id': self.subcontractor_id.id,
-            'serial': self.task_id.project_id.project_code or '' + "/" + self.task_id.main_item_id.name + "/" +
-                      self.subcontractor_id.name
+            'serial': serial
         })
 
     def _compute_creator_id(self):
