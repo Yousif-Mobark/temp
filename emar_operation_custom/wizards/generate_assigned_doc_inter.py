@@ -6,7 +6,7 @@ class GenerateAssignedDocInter(models.TransientModel):
     _name = "generate.assigned.doc.inter.wiz"
 
     company_operation_costing_account_id = fields.Many2one("account.account",
-                                                           related="project_id.company_operation_account")
+                                                           related="task_id.project_id.company_operation_account")
     # main_item = fields.Many2one()
     task_id = fields.Many2one('project.task')
     engineer_type = fields.Selection([('responsible', 'Responsible'), ('planned', 'Planned')], "Engineer",
@@ -31,6 +31,7 @@ class GenerateAssignedDocInter(models.TransientModel):
                                          })
         self.env['assigned.doc.int'].create({
             'assigned_date':  fields.Date.today(),
+            'company_operation_costing_account_id': self.company_operation_costing_account_id.id,
             'task_id': self.task_id.id,
             'assigned_line_ids': [(4, al.id) for al in self.assigned_line_ids],
             'creator_id': self._compute_creator_id(),

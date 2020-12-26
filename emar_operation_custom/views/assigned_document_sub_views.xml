@@ -22,7 +22,6 @@
                 <form>
                     <sheet>
                         <group>
-                            <field name="serial"/>
                             <field name="subcontractor_id"/>
                             <field name="assigned_date"/>
                             <field name="creator_id"/>
