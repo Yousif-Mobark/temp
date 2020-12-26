@@ -23,7 +23,7 @@ class GenerateAssignedDocSub(models.TransientModel):
                                          'body': "Internal Assigned Document Created",
                                          'subject': "Assigned Document",
                                          'needaction_partner_ids':
-                                             [(4, self.task_id.project_id.agreement_id.project_manager.id)],
+                                             [(4, self.task_id.project_id.agreement_id.project_manager.partner_id.id)],
                                          'model': self._name,
                                          'res_id': self.id,
                                          })

@@ -20,6 +20,10 @@
             <field name="model">assigned.doc.sub</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,waiting,running,rejected,closed"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="subcontractor_id"/>
