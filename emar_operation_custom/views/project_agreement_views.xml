@@ -36,6 +36,11 @@
                     <field name="pre_sales_engineer"/>
                 </xpath>
 
+                 <xpath expr="//field[@name='project_agreement_planned_line_ids']/tree/field[@name='name']"
+                       position="replace">
+                    <field name="working_item_id" string="name" required="1"/>
+                </xpath>
+
                 <xpath expr="//field[@name='project_agreement_planned_line_ids']/tree" position="attributes">
                          <attribute name="editable">bottom</attribute>
                 </xpath>

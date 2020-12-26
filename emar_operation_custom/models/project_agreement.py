@@ -282,6 +282,6 @@ class ProjectAgreementLine(models.Model):
     expected_end_date = fields.Date("Expected End Date")
     pm_revenue = fields.Float("PM Revenue")
     task_id = fields.Many2one("project.task")
-    pre_sales_engineer = fields.Many2one("res.users", "Pres-Sales Engineer", domain=lambda self: [("groups_id", "=",
-                                                                                                   self.env.ref(
-                                                                                                       "emar_operation_custom.group_pre_sales_engineer").id)])
+    pre_sales_engineer = fields.Many2one("res.users", "Pres-Sales Engineer", domain=lambda self: [("groups_id", "=",  self.env.ref( "emar_operation_custom.group_pre_sales_engineer").id)])
+    working_item_id = fields.Many2one("working.item")
+    name =fields.Char(related="working_item_id.name",required=False)
