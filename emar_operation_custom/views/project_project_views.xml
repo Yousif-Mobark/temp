@@ -20,7 +20,8 @@
                             <field name="company_operation_account" attrs="{'required':[('state','in',['under'])]}"/>
                             <field name="purchase_engineer" attrs="{'required':[('state','in',['under'])]}"/>
                             <field name="agreement_id" />
-                            <field name="raw_task" attrs="{'required':[('state','in',['under'])]}"/>
+                            <field name="raw_task" attrs="{'required':[('state','in',['under']),
+                            ('project_type', '=', 'supply')], 'invisible': ['|', ('state', 'not in', ['under']), ('project_type', '!=', 'supply')]}"/>
                         </group>
                     </group>
                 </xpath>

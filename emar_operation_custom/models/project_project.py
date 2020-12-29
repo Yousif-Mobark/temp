@@ -71,10 +71,10 @@ class ProjectProject(models.Model):
         # - Raw Material Lines:   from raw material tab if project     type is "Both"
         # - AnalyticAccount: from project form
         for rec in self.main_items:
-            rec.task_id=self.task_ids.create({
+            rec.task_id = self.task_ids.create({
                 'main_item_id': rec.id,
-                'project_id': self.id
-
+                'project_id': self.id,
+                'presale_eng': rec.pre_sales_engineer.id
             })
 
         self.state = "under"
@@ -84,7 +84,6 @@ class ProjectProject(models.Model):
         self.ensure_one()
         for task in self.task_ids:
             task.state = 'wait'
-
 
     def print_financial(self):
         pass
@@ -98,12 +97,13 @@ class projectTeam(models.Model):
     in_main = fields.Boolean("In main items?")
     cost = fields.Float("cost per hour")
     total_hour = fields.Float()
-    total_cost = fields.Float(compute="get_total",stored=True)
+    total_cost = fields.Float(compute="get_total", stored=True)
 
-    @api.depends("cost","total_hour")
+    @api.depends("cost", "total_hour")
     @api.one
     def get_total(self):
-        self.total_cost = self.total_hour*self.cost
+        self.total_cost = self.total_hour * self.cost
+
 
 class mainitemline(models.Model):
     _inherit = "project.agreement.planned"
@@ -112,7 +112,7 @@ class mainitemline(models.Model):
 class rawMaterialLine(models.Model):
     _inherit = "project.agreement.raw.material.line"
 
-    main_working_item_id = fields.Many2one("project.agreement.planned") #not nessery field already used parent_id
+    main_working_item_id = fields.Many2one("project.agreement.planned")  # not nessery field already used parent_id
     task_id = fields.Many2one(related="parent_id.task_id")
     planned_unit_cost = fields.Float()
     remaining_quantity = fields.Float(compute="compute_remain_qty")
@@ -138,10 +138,10 @@ class workingItemLine(models.Model):
     uom_id = fields.Many2one("product.uom")
     planned_unit_cost = fields.Float()
     planned_quantity = fields.Float()
-    line_planned_cost = fields.Float(compute="compute_plan_cost",stored=True )
+    line_planned_cost = fields.Float(compute="compute_plan_cost", stored=True)
 
     @api.one
-    @api.depends("planned_unit_cost","planned_quantity")
+    @api.depends("planned_unit_cost", "planned_quantity")
     def compute_plan_cost(self):
         self.line_planned_cost = self.planned_quantity * self.planned_unit_cost
 

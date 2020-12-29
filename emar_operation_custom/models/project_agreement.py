@@ -88,7 +88,10 @@ class ProjectAgreement(models.Model):
 
     def action_start_studying(self):
         self.state = 'pq'
-        res = self.env['project.project'].create({'name': self.name})
+        res = self.env['project.project'].create({'name': self.name, 'project_type': self.project_type,
+                                                  'agreement_id': self.id})
+        res.project_warehouse = self.env['stock.warehouse'].create({'name': 'WH-' + self.code or '',
+                                                                    'code': 'WH' + str(self.id) or ''}).id
         res.analytic_account_id.name = self.code
         res.project_code = self.code
         self.project_id = res.id

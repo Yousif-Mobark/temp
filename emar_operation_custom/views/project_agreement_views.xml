@@ -82,6 +82,7 @@
                     <field name="parent_id" string="Main item" domain="[('agreement_id','=',agreement_id)]"/>
 
                                 <field name="required_quantity" sum="required_quantity"/>
+                                <field name="price_unit"/>
                                 <field name="expected_delivery_date"/>
                                 <field name="delivered_quantity"
                                        attrs="{'invisible':[('state','not in',['implementing','closed'])]}"
