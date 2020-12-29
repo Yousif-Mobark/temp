@@ -57,7 +57,9 @@
                             </tree>
                         </field>
                     </page>
-                    <page string="Raw materials lines by related main item">
+                    <field name="project_type" invisible="1"/>
+                    <page attrs="{'invisible': [('project_type', '=', 'installation')]}"
+                          string="Raw materials lines by related main item">
                         <field name="raw_material_ids" >
                             <tree>
                                 <field name="code"/>

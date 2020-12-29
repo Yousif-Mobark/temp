@@ -179,6 +179,7 @@ class ProjectTask(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('under', "Under study"),
                               ("wait", "Waiting"), ("run", "Running"), ("close", "Closed")
                               ], default="draft")
+    project_type = fields.Selection(related='project_id.project_type')
 
     def receipt_orders(self):
         # todo: get all stock  receipts
